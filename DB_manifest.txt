@@ -1,0 +1,6 @@
+DB.accdb_size_bytes: 331776
+DB.accdb_size_MB: 0.32
+DB_accdb.zip_size_bytes: 10853
+DB_accdb.zip_size_MB: 0.01
+DB.accdb_SHA256: 0d166ad9b54097dba6a786ada82107f1d7ce8687b34afa06cf8267a7572446bc
+DB_accdb.zip_SHA256: 2ff7c96af22709ae01bd496a773acf0927f95b284a9bc10d639f3658b4209346
