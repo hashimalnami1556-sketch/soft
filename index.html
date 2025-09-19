@@ -1,0 +1,2065 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>فريق - صيانة أجهزة تكييف</title>
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="data:application/json;base64,ewogICJuYW1lIjogItmB2LHZitmCIC0g2LXZitin2YbYqSDYo9is2YfYstipINiq2YPZiiZpIiwKICAic2hvcnRfbmFtZSI6ICLZgdix2YrZgiIsCiAgImRlc2NyaXB0aW9uIjogItmG2LjYp9mFINil2K/Yp9ix2Kkg2LTYp9mF2YQg2YTYtdmK2KfZhtipINij2YbZitin2LUg2KfZhNiq2YPZiiZpIiwKICAic3RhcnRfdXJsIjogIi8iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmOWZhZmIiLAogICJ0aGVtZV9jb2xvciI6ICIjNEE5MEUyIiwKICAib3JpZW50YXRpb24iOiAicG9ydHJhaXQiLAogICJjYXRlZ29yaWVzIjogWyJidXNpbmVzcyIsICJwcm9kdWN0aXZpdHkiLCAidXRpbGl0aWVzIl0sCiAgImljb25zIjogWwogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU5EZ2lJR2hsYVdkb2REMGlORGdpSUhabGNuTnBiMjQ5SWpFdU1TQXhMakVpSUhacFpYZENiM2c5SWpBZ01DQTBPQ0EwT0NJZ2VHMXNibk05SW1oMGRIQTZMeTkzZDNjdWR6TXViM0puTHpJd01EQXZjM1puSWlBK1BHUmxabk0rUEd4cGJtVmhja2R5WVdScFpXNTBJR2xrUFNKbmNtRmtJaUJpZVRFOUlqQWxJaUJpZVRJOUlqRXdNQ1VpSUhnek1UMGlJemN3T1VaR1JpSXJQR052Ykc5eUxYTjBiM0FnYjJabWMyVjBQU0l6UldNNVJEY2lMejQ4TDJ4cGJtVmhja2R5WVdScFpXNTBQanh3WVhSb0lHUTlJazB5TkM0Mk56UXlNU0l2UGp3dmNHRjBhRDQ4Y0dGMGFDQmtQU0pOTXpjdU1qWXpReUE1TGpZMU56RWdNemt1TXpVek9TQXhNeTQ0TVRjeVNTQXpOeTVxYWpVaUx6NDhMM0JoZEdnK1BIQmhkR2dnWkQwaVRUTTJMamMzTWtNek9TNHpOek15SURNekxqSTVNamc0SURNeUxqVTNNelUzSURNMkxqUTNNelUzU1RNM0xqa3dOemMxTHo0OEwzQmhkR2crUEM5a1pXWnpQajV5WldOMElDOXBJSHNnWm1sc2JEb2lJMFJGUmtGVlRGUWlPeUIzYVdSMGFEb2lNamRxY2lJN0lHaGxhV2RvZERvaU1qZHFjaUk3SUIwOEwzSmxZM1ErU1NTMGpHNVNOaUJqWDI5aGVISW1OamlnUVFBQUFBQkpSVTVFcmtKZ1p3PT0iLAogICAgICAic2l6ZXMiOiAiNDh4NDgiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfSwKICAgIHsKICAgICAgInNyYyI6ICJkYXRhOmltYWdlL3N2Zyt4bWw7YmFzZTY0LFBITjJaeUIzYVdSMGFEMGlOREFpSUdobGFXZG9kRDBpTkRBaUlIWmxjbk5wYjI0OUlqRXVNUzR4TGpFaUlIWnBaWGRDYjNnOUlqQWdNQ0EwTUNBME1DSWdlRzFzYm5NOUltaDBkSEE2THk5M2QzY3Vkek11YjNKbkx6SXdNREF2YzNablNDQSsKICAgICAgInNpemVzIjogIjE5MngxNzJpIGFuZW4gWWRhdGE6aW1hZ2UvjBpbmFjaThzQUFBQUFCSjlVNUVya0pnWnc9PSIsCiAgICAgICJzaXplcyI6ICIxOTJ4MTkyIiwKICAgICAgInR5cGUiOiAiaW1hZ2Uvc3ZnK3htbCIKICAgIH0sCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCM2FXUjBhRDBpTlRFeUlpQm9aV2xuYUhROUlqVXhNaUlnZG1WeWMybHZiajBpTVM0eE9UazZOeTQxT1RZaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlTU0I0YlcxdWN6MGlhSFIwY0RvdkwzZDNkeTUzTXk1dmNtY3ZNakF3TUM5emRtY2lQZz09IiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIgogICAgfQogIF0sCiAgInNjcmVlbnNob3RzIjogW10sCiAgInByZWZlcl9yZWxhdGVkX2FwcGxpY2F0aW9ucyI6IGZhbHNlCn0=">
+    
+    <!-- Apple Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="فريق">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#4A90E2">
+    <meta name="msapplication-TileColor" content="#4A90E2">
+    
+    <!-- Icons for all platforms -->
+    <link rel="apple-touch-icon" sizes="180x180" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTgwIiBoZWlnaHQ9IjE4MCIgdmlld0JveD0iMCAwIDE4MCAxODAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxODAiIGhlaWdodD0iMTgwIiByeD0iMjAiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRBOTBFMiIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyRTVCOEEiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cGF0aCBkPSJNOTAgNDBMMTEwIDcwSDcwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTkwIDEwMEM3MCA4MCA3MCA2MCA5MCA2MFMxMTAgODAgOTAgMTAwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTkwIDEyMEM3MCA5MCA3MCA3MCA5MCA3MFMxMTAgOTAgOTAgMTIwWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTkwIDEzMEM3MCA5NSA3MCA3NSA5MCA3NVMxMTAgOTUgOTAgMTMwWiIgZmlsbD0id2hpdGUiLz4KPC9zdmc+">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNCIgZmlsbD0iIzRBOTBFMiIvPgo8cGF0aCBkPSJNMTYgOEwyMCAxNEgxMloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyMEMxMiAxNiAxMiAxMiAxNiAxMlMyMCAxNiAxNiAyMFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0xNiAyNEMxMiAxOCAxMiAxNCAxNiAxNFMyMCAxOCAxNiAyNFoiIGZpbGw9IndoaXRlIi8+CjwvY3ZnPg==">
+    <link rel="icon" sizes="192x192" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyIiBoZWlnaHQ9IjE5MiIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIiByeD0iMjQiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRBOTBFMiIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyRTVCOEEiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cGF0aCBkPSJNOTYgNDhMMTIwIDgwSDcyWiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTk2IDEyOEM3MiA5NiA3MiA3MiA5NiA3MlMxMjAgOTYgOTYgMTI4WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTk2IDE0NEM3MiAxMDggNzIgODQgOTYgODRTMTIwIDEwOCA5NiAxNDRaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4=">
+    <link rel="icon" sizes="512x512" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxyZWN0IHdpZHRoPSI1MTIiIGhlaWdodD0iNTEyIiByeD0iNjQiIGZpbGw9InVybCgjZ3JhZGllbnQpIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50IiB4MT0iMCUiIHkxPSIwJSIgeDI9IjEwMCUiIHkyPSIxMDAlIj4KPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzRBOTBFMiIvPgo8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiMyRTVCOEEiLz4KPC9saW5lYXJHcmFkaWVudD4KPC9kZWZzPgo8cGF0aCBkPSJNMjU2IDEyOEwzMjAgMjE2SDE5MloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNTYgMzIwQzE5MiAyNTYgMTkyIDIwMCAyNTYgMjAwUzMyMCAyNTYgMjU2IDMyMFoiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0yNTYgMzg0QzE5MiAyODggMTkyIDIzMiAyNTYgMjMyUzMyMCAyODggMjU2IDM4NFoiIGZpbGw9IndoaXRlIi8+CjwvY3ZnPg==">
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4A90E2',
+                        'fariq-blue': '#4A90E2',
+                        'fariq-dark': '#2E5B8A',
+                        'fariq-light': '#87CEEB'
+                    },
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overscroll-behavior: none;
+            -webkit-overflow-scrolling: touch;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+        
+        .mobile-container {
+            height: 100vh;
+            height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .content-area {
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 6rem;
+        }
+        
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            padding: 0.5rem 0;
+            padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+            z-index: 50;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        
+        .dark .bottom-nav {
+            background: rgba(31, 41, 55, 0.95);
+            border-top-color: #374151;
+        }
+        
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 0.5rem;
+            color: #6b7280;
+            text-decoration: none;
+            transition: all 0.2s;
+            font-size: 0.75rem;
+            min-height: 3rem;
+            border-radius: 0.5rem;
+            margin: 0 0.25rem;
+        }
+        
+        .nav-item.active {
+            color: #4A90E2;
+            background: rgba(74, 144, 226, 0.1);
+        }
+        
+        .nav-item i {
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 1rem;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .mobile-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border: 1px solid #f3f4f6;
+            transition: all 0.2s;
+        }
+        
+        .mobile-card:active {
+            transform: scale(0.98);
+        }
+        
+        .dark .mobile-card {
+            background: #1f2937;
+            border-color: #374151;
+        }
+        
+        .mobile-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            background: white;
+            transition: all 0.2s;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .mobile-input:focus {
+            outline: none;
+            border-color: #4A90E2;
+            box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        }
+        
+        .dark .mobile-input {
+            background: #374151;
+            border-color: #4b5563;
+            color: white;
+        }
+        
+        .mobile-btn {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .mobile-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .mobile-btn-primary {
+            background: #4A90E2;
+            color: white;
+        }
+        
+        .mobile-btn-primary:hover {
+            background: #2E5B8A;
+        }
+        
+        .mobile-btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+        
+        .dark .mobile-btn-secondary {
+            background: #374151;
+            color: #d1d5db;
+        }
+        
+        .fab {
+            position: fixed;
+            bottom: 5.5rem;
+            left: 1rem;
+            width: 3.5rem;
+            height: 3.5rem;
+            background: #4A90E2;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(74, 144, 226, 0.4);
+            z-index: 40;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        
+        .fab:active {
+            transform: scale(1.1);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, var(--from), var(--to));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .modal-mobile {
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border-radius: 1rem 1rem 0 0;
+            padding: 1rem;
+            padding-bottom: calc(1rem + env(safe-area-inset-bottom));
+            z-index: 60;
+            transition: bottom 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        
+        .modal-mobile.active {
+            bottom: 0;
+        }
+        
+        .dark .modal-mobile {
+            background: #1f2937;
+        }
+        
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 55;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+        
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .swipe-indicator {
+            position: absolute;
+            top: 0.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2rem;
+            height: 0.25rem;
+            background: #d1d5db;
+            border-radius: 0.125rem;
+        }
+        
+        .loading-spinner {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 70;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+        }
+        
+        .loading-spinner.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .spinner {
+            width: 3rem;
+            height: 3rem;
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #4A90E2;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .notification {
+            position: fixed;
+            top: 1rem;
+            top: calc(1rem + env(safe-area-inset-top));
+            right: 1rem;
+            left: 1rem;
+            background: #10b981;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.75rem;
+            z-index: 80;
+            transform: translateY(-150%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        
+        .notification.show {
+            transform: translateY(0);
+        }
+        
+        .notification.error {
+            background: #ef4444;
+        }
+        
+        .notification.warning {
+            background: #f59e0b;
+        }
+        
+        .notification.info {
+            background: #3b82f6;
+        }
+        
+        /* Install prompt */
+        .install-prompt {
+            position: fixed;
+            bottom: 6rem;
+            left: 1rem;
+            right: 1rem;
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 1rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(150%);
+            transition: transform 0.3s ease;
+            z-index: 45;
+        }
+        
+        .install-prompt.show {
+            transform: translateY(0);
+        }
+        
+        .dark .install-prompt {
+            background: #1f2937;
+            border-color: #374151;
+        }
+        
+        /* Hide scrollbar but keep functionality */
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Improve touch targets */
+        button, .nav-item, .mobile-card[onclick] {
+            min-height: 44px;
+            min-width: 44px;
+        }
+        
+        /* Prevent selection on touch */
+        * {
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        /* Safe area support */
+        .safe-area-top {
+            padding-top: env(safe-area-inset-top);
+        }
+        
+        .safe-area-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        
+        /* Haptic feedback simulation */
+        .haptic-light:active {
+            animation: haptic-light 0.1s ease;
+        }
+        
+        @keyframes haptic-light {
+            0% { transform: scale(1); }
+            50% { transform: scale(0.98); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Offline indicator */
+        .offline-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #f59e0b;
+            color: white;
+            text-align: center;
+            padding: 0.5rem;
+            font-size: 0.875rem;
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
+            z-index: 100;
+        }
+        
+        .offline-indicator.show {
+            transform: translateY(0);
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white">
+    
+    <!-- Offline Indicator -->
+    <div id="offlineIndicator" class="offline-indicator">
+        <i class="fas fa-wifi-slash mr-2"></i>
+        لا يوجد اتصال بالإنترنت
+    </div>
+    
+    <!-- Install Prompt -->
+    <div id="installPrompt" class="install-prompt">
+        <div class="flex items-center justify-between">
+            <div class="flex items-center space-x-3 space-x-reverse">
+                <div class="w-10 h-10 bg-gradient-to-r from-primary to-fariq-dark rounded-lg flex items-center justify-center">
+                    <i class="fas fa-download text-white"></i>
+                </div>
+                <div>
+                    <h3 class="font-semibold">تثبيت التطبيق</h3>
+                    <p class="text-sm text-gray-600 dark:text-gray-300">للوصول السريع والاستخدام بدون إنترنت</p>
+                </div>
+            </div>
+            <div class="flex space-x-2 space-x-reverse">
+                <button onclick="dismissInstallPrompt()" class="px-3 py-1 text-sm text-gray-600 dark:text-gray-300">
+                    لاحقاً
+                </button>
+                <button onclick="installApp()" class="px-4 py-2 bg-primary text-white rounded-lg text-sm haptic-light">
+                    تثبيت
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="mobile-container">
+        <!-- Header -->
+        <header class="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 safe-area-top">
+            <div class="flex items-center justify-between p-4">
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-10 h-10 bg-gradient-to-r from-primary to-fariq-dark rounded-lg flex items-center justify-center">
+                        <i class="fas fa-snowflake text-white"></i>
+                    </div>
+                    <div>
+                        <h1 class="text-lg font-bold text-gray-900 dark:text-white">فريق</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">صيانة تكييف</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-2 space-x-reverse">
+                    <button id="darkModeToggle" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 haptic-light">
+                        <i class="fas fa-moon dark:hidden text-gray-600"></i>
+                        <i class="fas fa-sun hidden dark:block text-gray-300"></i>
+                    </button>
+                    <button id="notificationBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 relative haptic-light">
+                        <i class="fas fa-bell text-gray-600 dark:text-gray-300"></i>
+                        <span class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-white text-xs rounded-full flex items-center justify-center">3</span>
+                    </button>
+                    <button id="menuBtn" class="p-2 rounded-lg bg-gray-100 dark:bg-gray-700 haptic-light">
+                        <i class="fas fa-ellipsis-v text-gray-600 dark:text-gray-300"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Content Area -->
+        <div class="content-area hide-scrollbar">
+            
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <!-- Welcome Card -->
+                <div class="mobile-card mb-6" style="background: linear-gradient(135deg, #4A90E2, #2E5B8A); color: white; border: none;">
+                    <div class="text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-snowflake text-2xl"></i>
+                        </div>
+                        <h2 class="text-xl font-bold mb-2">مرحباً بك في فريق</h2>
+                        <p class="text-sm opacity-90">برودة تثق بها • خدمة 24/7</p>
+                        <div class="mt-4 flex items-center justify-center space-x-4 space-x-reverse text-sm">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock mr-1"></i>
+                                <span id="currentTime"></span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-thermometer-half mr-1"></i>
+                                <span>28°م</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-grid">
+                    <div class="stat-card haptic-light" style="--from: #3b82f6; --to: #1d4ed8;" onclick="switchTab('bookings')">
+                        <i class="fas fa-calendar-day text-2xl mb-2"></i>
+                        <div class="text-2xl font-bold">12</div>
+                        <div class="text-xs opacity-80">طلبات اليوم</div>
+                    </div>
+                    <div class="stat-card haptic-light" style="--from: #10b981; --to: #059669;" onclick="showStats('completed')">
+                        <i class="fas fa-check-circle text-2xl mb-2"></i>
+                        <div class="text-2xl font-bold">8</div>
+                        <div class="text-xs opacity-80">مكتملة</div>
+                    </div>
+                    <div class="stat-card haptic-light" style="--from: #f59e0b; --to: #d97706;" onclick="showStats('pending')">
+                        <i class="fas fa-hourglass-half text-2xl mb-2"></i>
+                        <div class="text-2xl font-bold">4</div>
+                        <div class="text-xs opacity-80">قيد التنفيذ</div>
+                    </div>
+                    <div class="stat-card haptic-light" style="--from: #8b5cf6; --to: #7c3aed;" onclick="showStats('revenue')">
+                        <i class="fas fa-coins text-2xl mb-2"></i>
+                        <div class="text-2xl font-bold">2,450</div>
+                        <div class="text-xs opacity-80">ر.س اليوم</div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="mobile-card">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-bolt ml-2 text-primary"></i>
+                        إجراءات سريعة
+                    </h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="switchTab('bookings')" class="p-4 bg-blue-50 dark:bg-blue-900/20 rounded-xl text-center haptic-light">
+                            <i class="fas fa-plus text-2xl text-blue-600 mb-2"></i>
+                            <p class="text-sm font-medium">حجز جديد</p>
+                        </button>
+                        <button onclick="switchTab('customers')" class="p-4 bg-green-50 dark:bg-green-900/20 rounded-xl text-center haptic-light">
+                            <i class="fas fa-user-plus text-2xl text-green-600 mb-2"></i>
+                            <p class="text-sm font-medium">عميل جديد</p>
+                        </button>
+                        <button onclick="switchTab('invoices')" class="p-4 bg-yellow-50 dark:bg-yellow-900/20 rounded-xl text-center haptic-light">
+                            <i class="fas fa-file-invoice text-2xl text-yellow-600 mb-2"></i>
+                            <p class="text-sm font-medium">فاتورة</p>
+                        </button>
+                        <button onclick="switchTab('calculator')" class="p-4 bg-purple-50 dark:bg-purple-900/20 rounded-xl text-center haptic-light">
+                            <i class="fas fa-calculator text-2xl text-purple-600 mb-2"></i>
+                            <p class="text-sm font-medium">حاسبة</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Recent Activities -->
+                <div class="mobile-card">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-clock ml-2 text-primary"></i>
+                        النشاطات الأخيرة
+                    </h3>
+                    <div class="space-y-3" id="recentActivities">
+                        <!-- Activities will be populated here -->
+                    </div>
+                </div>
+
+                <!-- Weather & Tips -->
+                <div class="mobile-card">
+                    <h3 class="text-lg font-semibold mb-4 flex items-center">
+                        <i class="fas fa-lightbulb ml-2 text-primary"></i>
+                        نصائح الصيانة
+                    </h3>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                        <div class="flex items-start space-x-3 space-x-reverse">
+                            <i class="fas fa-info-circle text-blue-600 mt-1"></i>
+                            <div>
+                                <p class="text-sm font-medium text-blue-800 dark:text-blue-200">نصيحة اليوم</p>
+                                <p class="text-sm text-blue-700 dark:text-blue-300 mt-1">
+                                    تنظيف فلتر المكيف كل شهر يحسن الأداء ويوفر الطاقة بنسبة تصل إلى 15%
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Bookings Tab -->
+            <div id="bookings" class="tab-content">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">الحجوزات</h2>
+                    <button onclick="openModal('newBookingModal')" class="mobile-btn-primary rounded-lg px-4 py-2 haptic-light">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="mobile-card">
+                    <div class="flex space-x-2 space-x-reverse mb-3">
+                        <input type="text" id="bookingSearch" placeholder="البحث في الحجوزات..." class="mobile-input flex-1">
+                        <button onclick="openFilter('bookings')" class="mobile-btn-primary rounded-lg px-4 haptic-light">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                    <div class="flex space-x-2 space-x-reverse text-sm overflow-x-auto">
+                        <button class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full whitespace-nowrap haptic-light">الكل</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full whitespace-nowrap haptic-light">مجدول</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full whitespace-nowrap haptic-light">قيد التنفيذ</button>
+                        <button class="px-3 py-1 bg-gray-100 text-gray-800 rounded-full whitespace-nowrap haptic-light">مكتمل</button>
+                    </div>
+                </div>
+
+                <!-- Bookings List -->
+                <div id="bookingsList">
+                    <!-- Bookings will be populated here -->
+                </div>
+            </div>
+
+            <!-- Customers Tab -->
+            <div id="customers" class="tab-content">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">العملاء</h2>
+                    <button onclick="openModal('newCustomerModal')" class="mobile-btn-primary rounded-lg px-4 py-2 haptic-light">
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Customer Stats -->
+                <div class="grid grid-cols-3 gap-3 mb-6">
+                    <div class="mobile-card text-center">
+                        <div class="text-2xl font-bold text-blue-600">156</div>
+                        <div class="text-xs text-gray-500">إجمالي</div>
+                    </div>
+                    <div class="mobile-card text-center">
+                        <div class="text-2xl font-bold text-green-600">89</div>
+                        <div class="text-xs text-gray-500">نشط</div>
+                    </div>
+                    <div class="mobile-card text-center">
+                        <div class="text-2xl font-bold text-yellow-600">4.8</div>
+                        <div class="text-xs text-gray-500">تقييم</div>
+                    </div>
+                </div>
+
+                <!-- Search -->
+                <div class="mobile-card">
+                    <input type="text" id="customerSearch" placeholder="البحث في العملاء..." class="mobile-input">
+                </div>
+
+                <!-- Customers List -->
+                <div id="customersList">
+                    <!-- Customers will be populated here -->
+                </div>
+            </div>
+
+            <!-- Services Tab -->
+            <div id="services" class="tab-content">
+                <h2 class="text-2xl font-bold mb-6">خدماتنا</h2>
+                
+                <div class="space-y-4" id="servicesList">
+                    <!-- Services will be populated here -->
+                </div>
+            </div>
+
+            <!-- Calculator Tab -->
+            <div id="calculator" class="tab-content">
+                <h2 class="text-2xl font-bold mb-6">حاسبة التكلفة</h2>
+                
+                <div class="mobile-card">
+                    <h3 class="text-lg font-semibold mb-4">حساب تكلفة الخدمة</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">نوع الخدمة</label>
+                            <select id="serviceType" class="mobile-input">
+                                <option value="maintenance">صيانة دورية - 150 ر.س</option>
+                                <option value="repair">إصلاح أعطال - 200 ر.س</option>
+                                <option value="installation">تركيب جديد - 500 ر.س</option>
+                                <option value="cleaning">تنظيف شامل - 100 ر.س</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">حجم المكيف</label>
+                            <select id="acSize" class="mobile-input">
+                                <option value="1">1 طن</option>
+                                <option value="1.5">1.5 طن</option>
+                                <option value="2">2 طن</option>
+                                <option value="2.5">2.5 طن</option>
+                                <option value="3">3 طن أو أكثر</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium mb-2">عدد الوحدات</label>
+                            <input type="number" id="unitCount" min="1" value="1" class="mobile-input">
+                        </div>
+                        
+                        <button onclick="calculateCost()" class="mobile-btn mobile-btn-primary haptic-light">
+                            <i class="fas fa-calculator"></i>
+                            احسب التكلفة
+                        </button>
+                        
+                        <div id="costResult" class="hidden bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 dark:text-blue-200">إجمالي التكلفة:</h4>
+                            <p class="text-3xl font-bold text-blue-600" id="totalCost">0 ر.س</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- AI Support Tab -->
+            <div id="ai-support" class="tab-content">
+                <h2 class="text-2xl font-bold mb-6">المساعد الذكي</h2>
+                
+                <div class="mobile-card mb-6">
+                    <div class="text-center py-8">
+                        <div class="w-16 h-16 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-robot text-2xl text-blue-600"></i>
+                        </div>
+                        <h3 class="text-lg font-semibold mb-2">مساعد ذكي</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">اطرح سؤالك حول مشاكل التكييف</p>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="mobile-card min-h-[300px] mb-4">
+                    <div id="chatMessages" class="space-y-3 mb-4 max-h-80 overflow-y-auto hide-scrollbar">
+                        <div class="flex items-start space-x-3 space-x-reverse">
+                            <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                                <i class="fas fa-robot text-white text-sm"></i>
+                            </div>
+                            <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 flex-1">
+                                <p class="text-sm">مرحباً! كيف يمكنني مساعدتك في تشخيص مشكلة التكييف؟</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Diagnosis -->
+                <div class="mobile-card mb-4">
+                    <h3 class="text-lg font-semibold mb-4">مشاكل شائعة</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <button onclick="quickDiagnosis('not-cooling')" class="p-3 bg-red-50 dark:bg-red-900/20 rounded-lg text-center haptic-light">
+                            <i class="fas fa-thermometer-empty text-xl text-red-600 mb-2"></i>
+                            <p class="text-sm">لا يبرد</p>
+                        </button>
+                        <button onclick="quickDiagnosis('noise')" class="p-3 bg-yellow-50 dark:bg-yellow-900/20 rounded-lg text-center haptic-light">
+                            <i class="fas fa-volume-up text-xl text-yellow-600 mb-2"></i>
+                            <p class="text-sm">أصوات غريبة</p>
+                        </button>
+                        <button onclick="quickDiagnosis('water-leak')" class="p-3 bg-blue-50 dark:bg-blue-900/20 rounded-lg text-center haptic-light">
+                            <i class="fas fa-tint text-xl text-blue-600 mb-2"></i>
+                            <p class="text-sm">تسريب مياه</p>
+                        </button>
+                        <button onclick="quickDiagnosis('power')" class="p-3 bg-gray-50 dark:bg-gray-700 rounded-lg text-center haptic-light">
+                            <i class="fas fa-power-off text-xl text-gray-600 mb-2"></i>
+                            <p class="text-sm">لا يعمل</p>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Chat Input -->
+                <div class="mobile-card">
+                    <div class="flex space-x-3 space-x-reverse">
+                        <input type="text" id="chatInput" placeholder="اكتب مشكلتك هنا..." class="mobile-input flex-1">
+                        <button onclick="sendAIMessage()" class="mobile-btn-primary rounded-lg px-4 haptic-light">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Invoices Tab -->
+            <div id="invoices" class="tab-content">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold">الفواتير</h2>
+                    <button onclick="openModal('newInvoiceModal')" class="mobile-btn-primary rounded-lg px-4 py-2 haptic-light">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+
+                <!-- Invoice Stats -->
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="mobile-card text-center">
+                        <div class="text-xl font-bold text-green-600">28</div>
+                        <div class="text-xs text-gray-500">مدفوعة</div>
+                    </div>
+                    <div class="mobile-card text-center">
+                        <div class="text-xl font-bold text-yellow-600">5</div>
+                        <div class="text-xs text-gray-500">معلقة</div>
+                    </div>
+                </div>
+
+                <!-- Invoices List -->
+                <div id="invoicesList">
+                    <!-- Invoices will be populated here -->
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <div class="flex justify-around">
+                <a href="#" class="nav-item active haptic-light" data-tab="dashboard">
+                    <i class="fas fa-home"></i>
+                    <span>الرئيسية</span>
+                </a>
+                <a href="#" class="nav-item haptic-light" data-tab="bookings">
+                    <i class="fas fa-calendar"></i>
+                    <span>الحجوزات</span>
+                </a>
+                <a href="#" class="nav-item haptic-light" data-tab="customers">
+                    <i class="fas fa-users"></i>
+                    <span>العملاء</span>
+                </a>
+                <a href="#" class="nav-item haptic-light" data-tab="services">
+                    <i class="fas fa-cog"></i>
+                    <span>الخدمات</span>
+                </a>
+                <a href="#" class="nav-item haptic-light" data-tab="ai-support">
+                    <i class="fas fa-robot"></i>
+                    <span>المساعد</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+    <!-- Floating Action Button -->
+    <button id="fab" class="fab haptic-light" onclick="openQuickActions()">
+        <i class="fas fa-plus"></i>
+    </button>
+
+    <!-- Modal Overlay -->
+    <div id="modalOverlay" class="modal-overlay" onclick="closeModal()"></div>
+
+    <!-- New Booking Modal -->
+    <div id="newBookingModal" class="modal-mobile">
+        <div class="swipe-indicator"></div>
+        <h3 class="text-xl font-bold mb-4 mt-4">حجز جديد</h3>
+        <form id="bookingForm" class="space-y-4">
+            <div>
+                <label class="block text-sm font-medium mb-2">اسم العميل *</label>
+                <input type="text" name="customerName" required class="mobile-input">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">رقم الجوال *</label>
+                <input type="tel" name="customerPhone" required class="mobile-input" placeholder="05xxxxxxxx">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">نوع الخدمة *</label>
+                <select name="serviceType" required class="mobile-input">
+                    <option value="">اختر نوع الخدمة</option>
+                    <option value="maintenance">صيانة دورية</option>
+                    <option value="repair">إصلاح أعطال</option>
+                    <option value="installation">تركيب جديد</option>
+                    <option value="cleaning">تنظيف شامل</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">التاريخ *</label>
+                <input type="date" name="date" required class="mobile-input">
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">الوقت *</label>
+                <select name="time" required class="mobile-input">
+                    <option value="">اختر الوقت</option>
+                    <option value="08:00">8:00 صباحاً</option>
+                    <option value="10:00">10:00 صباحاً</option>
+                    <option value="12:00">12:00 ظهراً</option>
+                    <option value="14:00">2:00 مساءً</option>
+                    <option value="16:00">4:00 مساءً</option>
+                    <option value="18:00">6:00 مساءً</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-sm font-medium mb-2">العنوان</label>
+                <textarea name="address" rows="3" class="mobile-input" placeholder="العنوان التفصيلي..."></textarea>
+            </div>
+            <div class="flex space-x-3 space-x-reverse">
+                <button type="button" onclick="closeModal()" class="mobile-btn mobile-btn-secondary flex-1 haptic-light">
+                    إلغاء
+                </button>
+                <button type="submit" class="mobile-btn mobile-btn-primary flex-1 haptic-light">
+                    حفظ الحجز
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner">
+        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 flex items-center space-x-4 space-x-reverse">
+            <div class="spinner"></div>
+            <span class="text-lg">جاري التحميل...</span>
+        </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <div class="flex items-center justify-between">
+            <span id="notificationText"></span>
+            <button onclick="hideNotification()" class="text-white/80 hover:text-white">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    <script>
+        // Global Variables
+        let currentTab = 'dashboard';
+        let currentModal = null;
+        let deferredPrompt = null;
+        let isOnline = navigator.onLine;
+
+        // Service Worker Registration
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register(createServiceWorker())
+                    .then(registration => {
+                        console.log('SW registered: ', registration);
+                    })
+                    .catch(registrationError => {
+                        console.log('SW registration failed: ', registrationError);
+                    });
+            });
+        }
+
+        // Create Service Worker inline
+        function createServiceWorker() {
+            const swCode = `
+                const CACHE_NAME = 'fariq-v1.0.0';
+                const urlsToCache = [
+                    '/',
+                    'https://cdn.tailwindcss.com',
+                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
+                    'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap'
+                ];
+
+                self.addEventListener('install', event => {
+                    event.waitUntil(
+                        caches.open(CACHE_NAME)
+                            .then(cache => cache.addAll(urlsToCache))
+                    );
+                });
+
+                self.addEventListener('fetch', event => {
+                    event.respondWith(
+                        caches.match(event.request)
+                            .then(response => {
+                                if (response) {
+                                    return response;
+                                }
+                                return fetch(event.request);
+                            }
+                        )
+                    );
+                });
+            `;
+            
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            return URL.createObjectURL(blob);
+        }
+
+        // Sample Data
+        const sampleData = {
+            bookings: [
+                {
+                    id: 'B001',
+                    customer: 'أحمد محمد العلي',
+                    phone: '0551234567',
+                    service: 'صيانة دورية',
+                    date: '2024-01-15',
+                    time: '10:00',
+                    status: 'مجدول',
+                    address: 'الرياض، حي النرجس'
+                },
+                {
+                    id: 'B002',
+                    customer: 'سارة أحمد الفهد',
+                    phone: '0551234568',
+                    service: 'إصلاح أعطال',
+                    date: '2024-01-15',
+                    time: '14:00',
+                    status: 'قيد التنفيذ',
+                    address: 'الرياض، حي العليا'
+                },
+                {
+                    id: 'B003',
+                    customer: 'خالد سعد المطيري',
+                    phone: '0551234569',
+                    service: 'تركيب جديد',
+                    date: '2024-01-14',
+                    time: '16:00',
+                    status: 'مكتمل',
+                    address: 'الرياض، حي المروج'
+                }
+            ],
+            customers: [
+                {
+                    name: 'أحمد محمد العلي',
+                    phone: '0551234567',
+                    totalBookings: 8,
+                    lastService: '2024-01-10',
+                    rating: 5,
+                    vip: true
+                },
+                {
+                    name: 'سارة أحمد الفهد',
+                    phone: '0551234568',
+                    totalBookings: 5,
+                    lastService: '2024-01-08',
+                    rating: 4,
+                    vip: false
+                },
+                {
+                    name: 'خالد سعد المطيري',
+                    phone: '0551234569',
+                    totalBookings: 12,
+                    lastService: '2024-01-12',
+                    rating: 5,
+                    vip: true
+                }
+            ],
+            services: [
+                {
+                    name: 'صيانة دورية',
+                    price: 150,
+                    color: 'blue',
+                    icon: 'fas fa-tools',
+                    description: 'تنظيف شامل وفحص دوري'
+                },
+                {
+                    name: 'إصلاح أعطال',
+                    price: 200,
+                    color: 'red',
+                    icon: 'fas fa-exclamation-triangle',
+                    description: 'تشخيص وإصلاح الأعطال'
+                },
+                {
+                    name: 'تركيب جديد',
+                    price: 500,
+                    color: 'green',
+                    icon: 'fas fa-plus-circle',
+                    description: 'تركيب وتشغيل احترافي'
+                },
+                {
+                    name: 'تنظيف شامل',
+                    price: 100,
+                    color: 'purple',
+                    icon: 'fas fa-spray-can',
+                    description: 'تنظيف عميق ومتخصص'
+                }
+            ],
+            invoices: [
+                {
+                    id: 'INV-001',
+                    customer: 'أحمد محمد العلي',
+                    amount: 350,
+                    date: '2024-01-10',
+                    status: 'مدفوعة'
+                },
+                {
+                    id: 'INV-002',
+                    customer: 'سارة أحمد الفهد',
+                    amount: 480,
+                    date: '2024-01-12',
+                    status: 'معلقة'
+                }
+            ]
+        };
+        // Initialize App
+        function initializeApp() {
+            initializeDarkMode();
+            initializeNavigation();
+            initializeTime();
+            initializeOnlineStatus();
+            initializePWAFeatures();
+            populateData();
+            populateRecentActivities();
+            addEventListeners();
+            
+            // Show welcome notification
+            setTimeout(() => {
+                showNotification('مرحباً بكم في تطبيق فريق!', 'success');
+            }, 1000);
+
+            // Show install prompt after delay
+            setTimeout(() => {
+                showInstallPrompt();
+            }, 3000);
+        }
+
+        // Dark Mode
+        function initializeDarkMode() {
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            
+            // Check system preference
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+            
+            // Load saved preference
+            const savedDarkMode = localStorage.getItem('darkMode');
+            if (savedDarkMode === 'true') {
+                document.documentElement.classList.add('dark');
+            }
+            
+            darkModeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('dark');
+                const isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('darkMode', isDark);
+                showNotification(isDark ? 'تم تفعيل الوضع المظلم' : 'تم تفعيل الوضع الفاتح');
+                
+                // Update theme color
+                const themeColor = isDark ? '#1f2937' : '#4A90E2';
+                document.querySelector('meta[name="theme-color"]').setAttribute('content', themeColor);
+            });
+        }
+
+        // Navigation
+        function initializeNavigation() {
+            const navItems = document.querySelectorAll('.nav-item');
+            
+            navItems.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const tabId = item.getAttribute('data-tab');
+                    switchTab(tabId);
+                });
+            });
+        }
+
+        function switchTab(tabId) {
+            // Update navigation
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            document.querySelector(`[data-tab="${tabId}"]`)?.classList.add('active');
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(tabId)?.classList.add('active');
+            
+            currentTab = tabId;
+            
+            // Hide FAB on certain tabs
+            const fab = document.getElementById('fab');
+            if (['dashboard', 'ai-support', 'calculator'].includes(tabId)) {
+                fab.style.display = 'none';
+            } else {
+                fab.style.display = 'flex';
+            }
+
+            // Analytics
+            if ('gtag' in window) {
+                gtag('event', 'page_view', {
+                    page_title: tabId,
+                    page_location: window.location.href
+                });
+            }
+        }
+
+        // Time and Date
+        function initializeTime() {
+            function updateTime() {
+                const now = new Date();
+                const timeString = now.toLocaleTimeString('ar-SA', {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                });
+                const timeElement = document.getElementById('currentTime');
+                if (timeElement) {
+                    timeElement.textContent = timeString;
+                }
+            }
+            
+            updateTime();
+            setInterval(updateTime, 60000); // Update every minute
+        }
+
+        // Online Status
+        function initializeOnlineStatus() {
+            const indicator = document.getElementById('offlineIndicator');
+            
+            function updateOnlineStatus() {
+                if (navigator.onLine) {
+                    indicator.classList.remove('show');
+                    isOnline = true;
+                } else {
+                    indicator.classList.add('show');
+                    isOnline = false;
+                }
+            }
+            
+            window.addEventListener('online', updateOnlineStatus);
+            window.addEventListener('offline', updateOnlineStatus);
+            updateOnlineStatus();
+        }
+
+        // PWA Features
+        function initializePWAFeatures() {
+            // Install prompt
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                showInstallPrompt();
+            });
+
+            // App installed
+            window.addEventListener('appinstalled', () => {
+                hideInstallPrompt();
+                showNotification('تم تثبيت التطبيق بنجاح!', 'success');
+                deferredPrompt = null;
+            });
+        }
+        function showInstallPrompt() {
+            const prompt = document.getElementById('installPrompt');
+            if (deferredPrompt && !localStorage.getItem('installPromptDismissed')) {
+                prompt.classList.add('show');
+            }
+        }
+
+        function hideInstallPrompt() {
+            document.getElementById('installPrompt').classList.remove('show');
+        }
+
+        function installApp() {
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('User accepted the install prompt');
+                    } else {
+                        console.log('User dismissed the install prompt');
+                    }
+                    deferredPrompt = null;
+                });
+            }
+            hideInstallPrompt();
+        }
+
+        function dismissInstallPrompt() {
+            hideInstallPrompt();
+            localStorage.setItem('installPromptDismissed', 'true');
+        }
+
+        // Populate Data
+        function populateData() {
+            populateBookings();
+            populateCustomers();
+            populateServices();
+            populateInvoices();
+        }
+
+        function populateRecentActivities() {
+            const container = document.getElementById('recentActivities');
+            const activities = [
+                {
+                    icon: 'fas fa-check-circle',
+                    color: 'green',
+                    title: 'تم إكمال صيانة دورية',
+                    description: 'أحمد محمد العلي',
+                    time: 'منذ 5 دقائق'
+                },
+                {
+                    icon: 'fas fa-plus-circle',
+                    color: 'blue',
+                    title: 'طلب جديد',
+                    description: 'سارة أحمد الفهد',
+                    time: 'منذ 15 دقيقة'
+                },
+                {
+                    icon: 'fas fa-calendar-plus',
+                    color: 'yellow',
+                    title: 'موعد مجدول',
+                    description: 'خالد سعد المطيري',
+                    time: 'منذ 30 دقيقة'
+                }
+            ];
+
+            container.innerHTML = activities.map(activity => `
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <div class="w-8 h-8 bg-${activity.color}-100 dark:bg-${activity.color}-900/20 rounded-full flex items-center justify-center">
+                        <i class="${activity.icon} text-${activity.color}-600 text-sm"></i>
+                    </div>
+                    <div class="flex-1">
+                        <p class="font-medium text-sm">${activity.title}</p>
+                        <p class="text-xs text-gray-500">${activity.description} • ${activity.time}</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateBookings() {
+            const container = document.getElementById('bookingsList');
+            if (!container) return;
+            
+            container.innerHTML = sampleData.bookings.map(booking => {
+                const statusColors = {
+                    'مجدول': 'blue',
+                    'قيد التنفيذ': 'yellow',
+                    'مكتمل': 'green',
+                    'ملغي': 'red'
+                };
+                const color = statusColors[booking.status];
+                
+                return `
+                    <div class="mobile-card haptic-light" onclick="viewBooking('${booking.id}')">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold">${booking.id}</span>
+                            <span class="px-2 py-1 text-xs rounded-full bg-${color}-100 text-${color}-800 dark:bg-${color}-900 dark:text-${color}-200">
+                                ${booking.status}
+                            </span>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-1">${booking.customer}</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300 mb-2">${booking.service}</p>
+                        <div class="flex items-center justify-between text-sm text-gray-500">
+                            <div class="flex items-center">
+                                <i class="fas fa-calendar ml-2"></i>
+                                ${booking.date} - ${booking.time}
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt ml-1"></i>
+                                <span class="text-xs">${booking.address}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        function populateCustomers() {
+            const container = document.getElementById('customersList');
+            if (!container) return;
+            
+            container.innerHTML = sampleData.customers.map(customer => {
+                const stars = '★'.repeat(customer.rating) + '☆'.repeat(5 - customer.rating);
+                
+                return `
+                    <div class="mobile-card haptic-light" onclick="viewCustomer('${customer.phone}')">
+                        <div class="flex items-center space-x-3 space-x-reverse mb-3">
+                            <div class="w-12 h-12 bg-blue-100 dark:bg-blue-900/20 rounded-full flex items-center justify-center relative">
+                                <i class="fas fa-user text-blue-600 text-lg"></i>
+                                ${customer.vip ? '<div class="absolute -top-1 -right-1 w-4 h-4 bg-yellow-500 rounded-full flex items-center justify-center"><i class="fas fa-crown text-white text-xs"></i></div>' : ''}
+                            </div>
+                            <div class="flex-1">
+                                <h3 class="font-semibold">${customer.name}</h3>
+                                <p class="text-sm text-gray-500">${customer.phone}</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-3 gap-3 text-center text-sm">
+                            <div>
+                                <div class="font-semibold text-blue-600">${customer.totalBookings}</div>
+                                <div class="text-xs text-gray-500">حجوزات</div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-green-600">${customer.lastService}</div>
+                                <div class="text-xs text-gray-500">آخر خدمة</div>
+                            </div>
+                            <div>
+                                <div class="text-yellow-500">${stars}</div>
+                                <div class="text-xs text-gray-500">التقييم</div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function populateServices() {
+            const container = document.getElementById('servicesList');
+            if (!container) return;
+            
+            container.innerHTML = sampleData.services.map(service => `
+                <div class="mobile-card haptic-light">
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center space-x-3 space-x-reverse">
+                            <div class="w-12 h-12 bg-${service.color}-100 dark:bg-${service.color}-900/20 rounded-lg flex items-center justify-center">
+                                <i class="${service.icon} text-${service.color}-600 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold">${service.name}</h3>
+                                <p class="text-xs text-gray-500">${service.description}</p>
+                                <p class="text-sm font-medium text-${service.color}-600">ابتداءً من ${service.price} ر.س</p>
+                            </div>
+                        </div>
+                        <button onclick="bookService('${service.name}')" class="mobile-btn-primary rounded-lg px-4 py-2 text-sm haptic-light">
+                            احجز
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function populateInvoices() {
+            const container = document.getElementById('invoicesList');
+            if (!container) return;
+            
+            container.innerHTML = sampleData.invoices.map(invoice => {
+                const statusColors = {
+                    'مدفوعة': 'green',
+                    'معلقة': 'yellow',
+                    'متأخرة': 'red'
+                };
+                const color = statusColors[invoice.status];
+                
+                return `
+                    <div class="mobile-card haptic-light" onclick="viewInvoice('${invoice.id}')">
+                        <div class="flex items-center justify-between mb-2">
+                            <span class="font-semibold">${invoice.id}</span>
+                            <span class="px-2 py-1 text-xs rounded-full bg-${color}-100 text-${color}-800 dark:bg-${color}-900 dark:text-${color}-200">
+                                ${invoice.status}
+                            </span>
+                        </div>
+                        <h3 class="font-semibold mb-1">${invoice.customer}</h3>
+                        <div class="flex items-center justify-between text-sm">
+                            <span class="text-gray-500">${invoice.date}</span>
+                            <span class="font-bold text-lg text-primary">${invoice.amount} ر.س</span>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+        // Modal Functions
+        function openModal(modalId) {
+            currentModal = modalId;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            if (currentModal) {
+                document.getElementById('modalOverlay').classList.remove('active');
+                document.getElementById(currentModal).classList.remove('active');
+                currentModal = null;
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Notification System
+        function showNotification(message, type = 'success') {
+            const notification = document.getElementById('notification');
+            const notificationText = document.getElementById('notificationText');
+            
+            notificationText.textContent = message;
+            notification.className = `notification show ${type}`;
+            
+            setTimeout(() => {
+                hideNotification();
+            }, 4000);
+
+            // Add to local storage for offline viewing
+            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            notifications.unshift({
+                message,
+                type,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('notifications', JSON.stringify(notifications.slice(0, 10)));
+        }
+
+        function hideNotification() {
+            document.getElementById('notification').classList.remove('show');
+        }
+
+        function showLoading() {
+            document.getElementById('loadingSpinner').classList.add('active');
+        }
+
+        function hideLoading() {
+            document.getElementById('loadingSpinner').classList.remove('active');
+        }
+
+        // AI Support Functions
+        function sendAIMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            if (!message) return;
+            
+            addChatMessage(message, 'user');
+            input.value = '';
+            
+            // Show typing indicator
+            showTypingIndicator();
+            
+            // Simulate AI response
+            setTimeout(() => {
+                hideTypingIndicator();
+                const response = getAIResponse(message);
+                addChatMessage(response, 'ai');
+            }, 1000 + Math.random() * 2000);
+        }
+
+        function addChatMessage(message, sender) {
+            const messagesContainer = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            
+            if (sender === 'user') {
+                messageDiv.className = 'flex items-start space-x-3 space-x-reverse justify-end';
+                messageDiv.innerHTML = `
+                    <div class="bg-primary text-white rounded-lg p-3 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                        <div class="text-xs opacity-75 mt-1">${new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}</div>
+                    </div>
+                    <div class="w-8 h-8 bg-gray-300 rounded-full flex items-center justify-center">
+                        <i class="fas fa-user text-gray-600 text-sm"></i>
+                    </div>
+                `;
+            } else {
+                messageDiv.className = 'flex items-start space-x-3 space-x-reverse';
+                messageDiv.innerHTML = `
+                    <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                        <i class="fas fa-robot text-white text-sm"></i>
+                    </div>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                        <div class="text-xs opacity-75 mt-1">${new Date().toLocaleTimeString('ar-SA', { hour: '2-digit', minute: '2-digit' })}</div>
+                    </div>
+                `;
+            }
+            
+            messagesContainer.appendChild(messageDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+
+        function showTypingIndicator() {
+            const messagesContainer = document.getElementById('chatMessages');
+            const typingDiv = document.createElement('div');
+            typingDiv.id = 'typingIndicator';
+            typingDiv.className = 'flex items-start space-x-3 space-x-reverse';
+            typingDiv.innerHTML = `
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-robot text-white text-sm"></i>
+                </div>
+                <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                    <div class="flex space-x-1">
+                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce"></div>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                        <div class="w-2 h-2 bg-blue-500 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    </div>
+                </div>
+            `;
+            messagesContainer.appendChild(typingDiv);
+            messagesContainer.scrollTop = messagesContainer.scrollHeight;
+        }
+        function hideTypingIndicator() {
+            const typingIndicator = document.getElementById('typingIndicator');
+            if (typingIndicator) {
+                typingIndicator.remove();
+            }
+        }
+
+        function getAIResponse(message) {
+            const responses = {
+                'لا يبرد': 'قد تكون المشكلة في الفلتر المتسخ أو نقص في الغاز. أنصح بفحص الفلتر أولاً وتنظيفه. إذا لم تتحسن المشكلة، قد تحتاج لشحن الغاز من قبل فني مختص.',
+                'صوت': 'الأصوات الغريبة قد تكون بسبب تراكم الأتربة أو قطع مفكوكة. أنصح بإيقاف المكيف وفحصه من قبل فني مختص للسلامة.',
+                'مياه': 'تسريب المياه عادة ما يكون بسبب انسداد في مصرف المياه. حاول تنظيف المصرف بعناية، وإذا استمرت المشكلة اتصل بالفني.',
+                'لا يعمل': 'تأكد من وصول الكهرباء والبريكر أولاً، وافحص بطاريات الريموت. إذا كان كل شيء سليم، فقد تكون المشكلة في اللوحة الإلكترونية.',
+                'تبريد ضعيف': 'قد يكون بسبب انسداد الفلتر، أو تسرب في الغاز، أو مشكلة في الضاغط. ابدأ بتنظيف الفلتر والوحدة الخارجية.',
+                'فاتورة عالية': 'استهلاك الكهرباء العالي قد يكون بسبب فلتر متسخ، أو تسرب في العزل، أو عدم ضبط درجة الحرارة المناسبة (24°م مثالية).'
+            };
+            
+            const lowerMessage = message.toLowerCase();
+            for (const key in responses) {
+                if (lowerMessage.includes(key)) {
+                    return responses[key];
+                }
+            }
+            
+            // Default responses based on keywords
+            if (lowerMessage.includes('سعر') || lowerMessage.includes('تكلفة')) {
+                return 'أسعار خدماتنا: صيانة دورية 150 ر.س، إصلاح أعطال من 200 ر.س، تركيب جديد من 500 ر.س، تنظيف شامل 100 ر.س. يمكنك استخدام حاسبة التكلفة للحصول على سعر دقيق.';
+            }
+            
+            if (lowerMessage.includes('موعد') || lowerMessage.includes('حجز')) {
+                return 'يمكنك حجز موعد من خلال تبويب "الحجوزات" أو الضغط على زر "حجز جديد" من الشاشة الرئيسية. نحن متاحون من 8 صباحاً حتى 6 مساءً.';
+            }
+            
+            return 'شكراً لك على سؤالك. يمكنني مساعدتك في تشخيص مشاكل التكييف الشائعة. حاول وصف المشكلة بتفصيل أكثر أو استخدم الأزرار السريعة أعلاه.';
+        }
+
+        function quickDiagnosis(type) {
+            const diagnoses = {
+                'not-cooling': 'المكيف لا يبرد بشكل كافي؟
+
+🔧 خطوات التشخيص:
+1. فحص نظافة الفلتر
+2. التأكد من إعدادات درجة الحرارة
+3. فحص الوحدة الخارجية من الأتربة
+4. إذا استمرت المشكلة، قد تحتاج لشحن الغاز
+
+💡 نصيحة: درجة الحرارة المثالية هي 24°م',
+                'noise': 'الأصوات الغريبة قد تكون بسبب تراكم الأتربة أو قطع مفكوكة.
+
+⚠️ إجراءات الأمان:
+1. أوقف التشغيل فوراً
+2. تأكد من عدم وجود أجسام غريبة
+3. فحص المروحة الخارجية
+4. لا تحاول الإصلاح بنفسك
+
+📞 يُنصح بالاتصال بالفني المختص',
+                'water-leak': 'تسريب مياه من المكيف؟
+
+💧 الحلول المقترحة:
+1. تنظيف مصرف المياه بعناية
+2. فحص ميلان الوحدة الداخلية
+3. التأكد من سلامة الأنابيب
+4. فحص فلتر الهواء
+
+⚡ إذا لم تحل المشكلة، احتج فني',
+                'power': 'المكيف لا يعمل نهائياً؟
+
+🔌 فحص الكهرباء:
+1. تأكد من البريكر الكهربائي
+2. افحص بطاريات الريموت كنترول
+3. تأكد من وصول التيار للوحدة
+4. فحص كابل الكهرباء
+
+🛠️ إذا كل شيء سليم، المشكلة داخلية'
+            };
+            
+            addChatMessage(diagnoses[type], 'ai');
+        }
+
+        // Calculator Functions
+        function calculateCost() {
+            const serviceType = document.getElementById('serviceType').value;
+            const acSize = parseFloat(document.getElementById('acSize').value);
+            const unitCount = parseInt(document.getElementById('unitCount').value);
+            
+            let baseCost = 0;
+            switch(serviceType) {
+                case 'maintenance': baseCost = 150; break;
+                case 'repair': baseCost = 200; break;
+                case 'installation': baseCost = 500; break;
+                case 'cleaning': baseCost = 100; break;
+            }
+            
+            let sizeMultiplier = 1;
+            if (acSize >= 3) sizeMultiplier = 1.4;
+            else if (acSize >= 2.5) sizeMultiplier = 1.3;
+            else if (acSize >= 2) sizeMultiplier = 1.2;
+            else if (acSize >= 1.5) sizeMultiplier = 1.1;
+            
+            const totalCost = Math.round(baseCost * sizeMultiplier * unitCount);
+            
+            document.getElementById('totalCost').textContent = `${totalCost} ر.س`;
+            document.getElementById('costResult').classList.remove('hidden');
+            
+            showNotification('تم حساب التكلفة بنجاح');
+            
+            // Save calculation to history
+            const calculations = JSON.parse(localStorage.getItem('calculations') || '[]');
+            calculations.unshift({
+                serviceType,
+                acSize,
+                unitCount,
+                totalCost,
+                timestamp: new Date().toISOString()
+            });
+            localStorage.setItem('calculations', JSON.stringify(calculations.slice(0, 10)));
+        }
+        // Event Listeners
+        function addEventListeners() {
+            // Chat input enter key
+            document.getElementById('chatInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendAIMessage();
+                }
+            });
+            
+            // Form submissions
+            document.getElementById('bookingForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                handleBookingSubmission();
+            });
+
+            // Search functionality
+            document.getElementById('bookingSearch')?.addEventListener('input', (e) => {
+                filterBookings(e.target.value);
+            });
+
+            document.getElementById('customerSearch')?.addEventListener('input', (e) => {
+                filterCustomers(e.target.value);
+            });
+
+            // Menu button
+            document.getElementById('menuBtn').addEventListener('click', () => {
+                showMenu();
+            });
+
+            // Notification button
+            document.getElementById('notificationBtn').addEventListener('click', () => {
+                showNotificationHistory();
+            });
+
+            // Prevent zoom on double tap
+            let lastTouchEnd = 0;
+            document.addEventListener('touchend', function (event) {
+                const now = (new Date()).getTime();
+                if (now - lastTouchEnd <= 300) {
+                    event.preventDefault();
+                }
+                lastTouchEnd = now;
+            }, false);
+
+            // Handle viewport changes
+            window.addEventListener('resize', handleViewportChange);
+        }
+
+        function handleBookingSubmission() {
+            const form = document.getElementById('bookingForm');
+            const formData = new FormData(form);
+            
+            showLoading();
+            
+            // Simulate API call
+            setTimeout(() => {
+                hideLoading();
+                
+                // Add to bookings data
+                const newBooking = {
+                    id: 'B' + String(sampleData.bookings.length + 1).padStart(3, '0'),
+                    customer: formData.get('customerName'),
+                    phone: formData.get('customerPhone'),
+                    service: getServiceName(formData.get('serviceType')),
+                    date: formData.get('date'),
+                    time: formData.get('time'),
+                    status: 'مجدول',
+                    address: formData.get('address') || 'غير محدد'
+                };
+                
+                sampleData.bookings.unshift(newBooking);
+                populateBookings();
+                
+                closeModal();
+                form.reset();
+                
+                showNotification('تم حفظ الحجز بنجاح!', 'success');
+                
+                // Switch to bookings tab
+                switchTab('bookings');
+            }, 2000);
+        }
+
+        function getServiceName(serviceType) {
+            const serviceNames = {
+                'maintenance': 'صيانة دورية',
+                'repair': 'إصلاح أعطال',
+                'installation': 'تركيب جديد',
+                'cleaning': 'تنظيف شامل'
+            };
+            return serviceNames[serviceType] || serviceType;
+        }
+
+        function filterBookings(searchTerm) {
+            const bookings = document.querySelectorAll('#bookingsList .mobile-card');
+            bookings.forEach(booking => {
+                const text = booking.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase())) {
+                    booking.style.display = 'block';
+                } else {
+                    booking.style.display = 'none';
+                }
+            });
+        }
+
+        function filterCustomers(searchTerm) {
+            const customers = document.querySelectorAll('#customersList .mobile-card');
+            customers.forEach(customer => {
+                const text = customer.textContent.toLowerCase();
+                if (text.includes(searchTerm.toLowerCase())) {
+                    customer.style.display = 'block';
+                } else {
+                    customer.style.display = 'none';
+                }
+            });
+        }
+
+        function handleViewportChange() {
+            // Update viewport height for mobile browsers
+            document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+        }
+        // Action Functions
+        function viewBooking(id) {
+            showNotification(`عرض تفاصيل الحجز ${id}`);
+            // Here you would typically open a detailed view
+        }
+
+        function viewCustomer(phone) {
+            showNotification(`عرض تفاصيل العميل ${phone}`);
+            // Here you would typically open customer profile
+        }
+
+        function viewInvoice(id) {
+            showNotification(`عرض الفاتورة ${id}`);
+            // Here you would typically open invoice details
+        }
+
+        function bookService(serviceName) {
+            showNotification(`فتح نموذج حجز خدمة: ${serviceName}`);
+            openModal('newBookingModal');
+            // Pre-fill service type
+            setTimeout(() => {
+                const serviceSelect = document.querySelector('[name="serviceType"]');
+                const serviceValue = {
+                    'صيانة دورية': 'maintenance',
+                    'إصلاح أعطال': 'repair',
+                    'تركيب جديد': 'installation',
+                    'تنظيف شامل': 'cleaning'
+                };
+                serviceSelect.value = serviceValue[serviceName] || '';
+            }, 100);
+        }
+
+        function showStats(type) {
+            const messages = {
+                'completed': 'تم إكمال 8 طلبات اليوم بنجاح',
+                'pending': 'يوجد 4 طلبات قيد التنفيذ حالياً',
+                'revenue': 'إجمالي إيرادات اليوم: 2,450 ر.س'
+            };
+            showNotification(messages[type] || 'إحصائيات اليوم');
+        }
+
+        function openQuickActions() {
+            const actions = [
+                { name: 'حجز سريع', action: () => openModal('newBookingModal') },
+                { name: 'اتصال طوارئ', action: () => makeEmergencyCall() },
+                { name: 'مشاركة التطبيق', action: () => shareApp() }
+            ];
+            
+            // Create action sheet
+            showActionSheet(actions);
+        }
+
+        function showActionSheet(actions) {
+            const actionSheet = document.createElement('div');
+            actionSheet.className = 'modal-mobile active';
+            actionSheet.innerHTML = `
+                <div class="swipe-indicator"></div>
+                <h3 class="text-xl font-bold mb-4 mt-4">إجراءات سريعة</h3>
+                <div class="space-y-2">
+                    ${actions.map(action => `
+                        <button onclick="${action.action.name}(); this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
+                                class="w-full p-4 text-right rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
+                            ${action.name}
+                        </button>
+                    `).join('')}
+                    <button onclick="this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
+                            class="w-full p-4 text-center rounded-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 mt-4">
+                        إلغاء
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.appendChild(actionSheet);
+        }
+
+        function makeEmergencyCall() {
+            if ('navigator' in window && 'vibrate' in navigator) {
+                navigator.vibrate([200, 100, 200]);
+            }
+            window.location.href = 'tel:+966551234567';
+        }
+
+        function shareApp() {
+            if ('navigator' in window && 'share' in navigator) {
+                navigator.share({
+                    title: 'تطبيق فريق - صيانة أجهزة تكييف',
+                    text: 'أفضل تطبيق لإدارة صيانة أجهزة التكييف',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const text = `تطبيق فريق - صيانة أجهزة تكييف
+${window.location.href}`;
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(text);
+                    showNotification('تم نسخ رابط التطبيق');
+                } else {
+                    showNotification('مشاركة التطبيق غير مدعومة في هذا المتصفح');
+                }
+            }
+        }
+
+        function showMenu() {
+            const menuActions = [
+                { name: '⚙️ الإعدادات', action: () => showSettings() },
+                { name: '📊 إحصائيات التطبيق', action: () => showAppStats() },
+                { name: '💾 نسخ احتياطي', action: () => createBackup() },
+                { name: '📞 اتصل بنا', action: () => contactUs() },
+                { name: '❓ المساعدة', action: () => showHelp() },
+                { name: 'ℹ️ حول التطبيق', action: () => showAbout() }
+            ];
+            
+            showActionSheet(menuActions);
+        }
+        function showNotificationHistory() {
+            const notifications = JSON.parse(localStorage.getItem('notifications') || '[]');
+            if (notifications.length === 0) {
+                showNotification('لا توجد إشعارات محفوظة');
+                return;
+            }
+            
+            const modal = document.createElement('div');
+            modal.className = 'modal-mobile active';
+            modal.innerHTML = `
+                <div class="swipe-indicator"></div>
+                <h3 class="text-xl font-bold mb-4 mt-4">الإشعارات</h3>
+                <div class="space-y-3 max-h-96 overflow-y-auto">
+                    ${notifications.map(notif => `
+                        <div class="p-3 rounded-lg bg-gray-50 dark:bg-gray-700">
+                            <p class="text-sm">${notif.message}</p>
+                            <p class="text-xs text-gray-500 mt-1">${new Date(notif.timestamp).toLocaleString('ar-SA')}</p>
+                        </div>
+                    `).join('')}
+                </div>
+                <button onclick="this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
+                        class="w-full p-4 text-center rounded-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 mt-4">
+                    إغلاق
+                </button>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.appendChild(modal);
+        }
+
+        function showSettings() {
+            showNotification('ميزة الإعدادات قيد التطوير');
+        }
+
+        function showAppStats() {
+            const stats = {
+                bookings: sampleData.bookings.length,
+                customers: sampleData.customers.length,
+                services: sampleData.services.length,
+                invoices: sampleData.invoices.length
+            };
+            
+            showNotification(`إحصائيات التطبيق: ${stats.bookings} حجز، ${stats.customers} عميل، ${stats.services} خدمات، ${stats.invoices} فاتورة`);
+        }
+
+        function createBackup() {
+            const backup = {
+                bookings: sampleData.bookings,
+                customers: sampleData.customers,
+                timestamp: new Date().toISOString()
+            };
+            
+            const dataStr = JSON.stringify(backup);
+            const dataBlob = new Blob([dataStr], { type: 'application/json' });
+            const url = URL.createObjectURL(dataBlob);
+            
+            const link = document.createElement('a');
+            link.href = url;
+            link.download = `fariq-backup-${new Date().toISOString().split('T')[0]}.json`;
+            link.click();
+            
+            URL.revokeObjectURL(url);
+            showNotification('تم إنشاء النسخة الاحتياطية');
+        }
+
+        function contactUs() {
+            window.location.href = 'tel:+966551234567';
+        }
+
+        function showHelp() {
+            switchTab('ai-support');
+            showNotification('يمكنك طرح أي سؤال على المساعد الذكي');
+        }
+
+        function showAbout() {
+            const aboutModal = document.createElement('div');
+            aboutModal.className = 'modal-mobile active';
+            aboutModal.innerHTML = `
+                <div class="swipe-indicator"></div>
+                <div class="text-center py-8">
+                    <div class="w-20 h-20 bg-gradient-to-r from-primary to-fariq-dark rounded-2xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-snowflake text-white text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-2">فريق</h3>
+                    <p class="text-lg text-primary font-semibold mb-2">صيانة أجهزة تكييف</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-4">الإصدار 2.0.0</p>
+                    <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">برودة تثق بها • خدمة على مدار الساعة</p>
+                    
+                    <div class="text-right space-y-2 mb-6">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-500">تاريخ الإصدار:</span>
+                            <span class="text-sm font-medium">يناير 2024</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-500">المطور:</span>
+                            <span class="text-sm font-medium">فريق التطوير</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-500">الترخيص:</span>
+                            <span class="text-sm font-medium">خاص</span>
+                        </div>
+                    </div>
+                    
+                    <button onclick="this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
+                            class="mobile-btn mobile-btn-primary">
+                        إغلاق
+                    </button>
+                </div>
+            `;
+            
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.appendChild(aboutModal);
+        }
+
+        // Initialize app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initializeApp);
+
+        // Initial viewport setup
+        document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    </script>
+</body>
+</html>
