@@ -2012,6 +2012,9 @@
                 button.className = 'w-full p-4 text-right rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors';
                 button.textContent = action.name;
                 button.addEventListener('click', () => {
+                    const sheetOverlay = actionSheet;
+                    let shouldCloseSheet = true;
+
                     try {
                         if (typeof action.action === 'function') {
                             action.action();
@@ -2021,7 +2024,10 @@
                     } catch (error) {
                         console.error('Error executing action sheet item:', error);
                         showNotification('حدث خطأ أثناء تنفيذ الإجراء', 'error');
-                    } finally {
+                        shouldCloseSheet = false;
+                    }
+
+                    if (shouldCloseSheet && activeOverlayPanel === sheetOverlay) {
                         closeOverlayPanel();
                     }
                 });
