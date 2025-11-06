@@ -971,51 +971,14 @@
 
         // Service Worker Registration
         if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register(createServiceWorker())
-                    .then(registration => {
-                        console.log('SW registered: ', registration);
-                    })
-                    .catch(registrationError => {
-                        console.log('SW registration failed: ', registrationError);
-                    });
+            window.addEventListener('load', async () => {
+                try {
+                    const registration = await navigator.serviceWorker.register('./sw.js', { scope: './' });
+                    console.log('SW registered: ', registration);
+                } catch (registrationError) {
+                    console.log('SW registration failed: ', registrationError);
+                }
             });
-        }
-
-        // Create Service Worker inline
-        function createServiceWorker() {
-            const swCode = `
-                const CACHE_NAME = 'fariq-v1.0.0';
-                const urlsToCache = [
-                    '/',
-                    'https://cdn.tailwindcss.com',
-                    'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css',
-                    'https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap'
-                ];
-
-                self.addEventListener('install', event => {
-                    event.waitUntil(
-                        caches.open(CACHE_NAME)
-                            .then(cache => cache.addAll(urlsToCache))
-                    );
-                });
-
-                self.addEventListener('fetch', event => {
-                    event.respondWith(
-                        caches.match(event.request)
-                            .then(response => {
-                                if (response) {
-                                    return response;
-                                }
-                                return fetch(event.request);
-                            }
-                        )
-                    );
-                });
-            `;
-            
-            const blob = new Blob([swCode], { type: 'application/javascript' });
-            return URL.createObjectURL(blob);
         }
 
         // Sample Data
@@ -1940,30 +1903,65 @@
             ];
             
             // Create action sheet
-            showActionSheet(actions);
+            showActionSheet(actions, { title: 'إجراءات سريعة' });
         }
 
-        function showActionSheet(actions) {
+        function showActionSheet(actions, options = {}) {
+            if (!Array.isArray(actions) || actions.length === 0) {
+                console.warn('showActionSheet called without actions');
+                showNotification('لا توجد إجراءات متاحة حالياً', 'warning');
+                return;
+            }
+
+            const { title = 'إجراءات' } = options;
+            const overlay = document.getElementById('modalOverlay');
             const actionSheet = document.createElement('div');
             actionSheet.className = 'modal-mobile active';
             actionSheet.innerHTML = `
                 <div class="swipe-indicator"></div>
-                <h3 class="text-xl font-bold mb-4 mt-4">إجراءات سريعة</h3>
-                <div class="space-y-2">
-                    ${actions.map(action => `
-                        <button onclick="${action.action.name}(); this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
-                                class="w-full p-4 text-right rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors">
-                            ${action.name}
-                        </button>
-                    `).join('')}
-                    <button onclick="this.closest('.modal-mobile').remove(); document.getElementById('modalOverlay').classList.remove('active');" 
-                            class="w-full p-4 text-center rounded-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 mt-4">
-                        إلغاء
-                    </button>
-                </div>
+                <h3 class="text-xl font-bold mb-4 mt-4">${title}</h3>
+                <div class="space-y-2" id="actionSheetOptions"></div>
+                <button type="button"
+                        class="w-full p-4 text-center rounded-lg bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-gray-300 mt-4 cancel-action-sheet">
+                    إلغاء
+                </button>
             `;
-            
-            document.getElementById('modalOverlay').classList.add('active');
+
+            const optionsContainer = actionSheet.querySelector('#actionSheetOptions');
+
+            actions.forEach(action => {
+                const button = document.createElement('button');
+                button.type = 'button';
+                button.textContent = action.name;
+                button.className = 'w-full p-4 text-right rounded-lg bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors';
+                button.addEventListener('click', () => {
+                    closeSheet();
+                    if (typeof action.action === 'function') {
+                        try {
+                            action.action();
+                        } catch (error) {
+                            console.error('Action execution failed:', error);
+                            showNotification('حدث خطأ أثناء تنفيذ الإجراء', 'error');
+                        }
+                    }
+                });
+                optionsContainer.appendChild(button);
+            });
+
+            const cancelButton = actionSheet.querySelector('.cancel-action-sheet');
+            cancelButton.addEventListener('click', () => {
+                closeSheet();
+            });
+
+            function closeSheet() {
+                actionSheet.classList.remove('active');
+                actionSheet.remove();
+                overlay.classList.remove('active');
+                overlay.removeEventListener('click', closeSheet);
+            }
+
+            overlay.classList.add('active');
+            overlay.addEventListener('click', closeSheet, { once: true });
             document.body.appendChild(actionSheet);
         }
 
@@ -2003,7 +2001,7 @@
                 { name: 'ℹ️ حول التطبيق', action: () => showAbout() }
             ];
             
-            showActionSheet(menuActions);
+            showActionSheet(menuActions, { title: 'خيارات التطبيق' });
         }
 
         function showNotificationHistory() {
