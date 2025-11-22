@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شركة معاضد - نظام إدارة قانونية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'maadid': '#2F5233',
+                        'maadid-dark': '#1A2E1C',
+                        'maadid-light': '#4A7C59',
+                        'maadid-gold': '#C19A4A'
+                    },
+                    fontFamily: {
+                        'cairo': ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif;
+            background: #F5F2E8;
+        }
+        
+        .sidebar {
+            background: #F5F2E8;
+            width: 300px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+        }
+        
+        .logo-section {
+            background: #2F5233;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .nav-menu {
+            padding: 2rem 1rem;
+        }
+        
+        .nav-item {
+            display: block;
+            padding: 1rem 1.5rem;
+            color: #2F5233;
+            text-decoration: none;
+            border-radius: 0.5rem;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+        
+        .nav-item:hover {
+            background: #2F5233;
+            color: white;
+            transform: translateX(-5px);
+        }
+        
+        .nav-item.active {
+            background: #2F5233;
+            color: #C19A4A;
+        }
+        
+        .main-content {
+            margin-right: 300px;
+            min-height: 100vh;
+            background: white;
+        }
+        
+        .header-section {
+            background: #2F5233;
+            color: white;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .case-card {
+            background: white;
+            border: 1px solid #E5E7EB;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .case-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+        
+        .status-badge {
+            padding: 0.5rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .status-session { background: #2F5233; color: white; }
+        .status-reference { background: #9CA3AF; color: white; }
+        .status-registration { background: #C19A4A; color: white; }
+        .status-appeal { background: #DC2626; color: white; }
+        
+        .countdown-timer {
+            background: linear-gradient(135deg, #2F5233, #4A7C59);
+            border-radius: 1rem;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            box-shadow: 0 8px 25px rgba(47, 82, 51, 0.3);
+        }
+        
+        .timer-display {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #C19A4A;
+            margin: 1rem 0;
+        }
+        
+        .add-case-btn {
+            background: rgba(47, 82, 51, 0.1);
+            border: 2px dashed #2F5233;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            color: #2F5233;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .add-case-btn:hover {
+            background: #2F5233;
+            color: white;
+            border-style: solid;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <!-- Logo Section -->
+        <div class="logo-section">
+            <div class="w-16 h-16 mx-auto mb-4 text-4xl">⚖️</div>
+            <h1 class="text-lg font-bold text-maadid-gold">شركة معاضد</h1>
+            <p class="text-sm opacity-75">MAADID FIRM</p>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="nav-menu">
+            <a href="#" class="nav-item" data-section="dashboard">لوحة المعلومات</a>
+            <a href="#" class="nav-item active" data-section="cases">القضايا</a>
+            <a href="#" class="nav-item" data-section="sessions">الجلسات</a>
+            <a href="#" class="nav-item" data-section="invoices">الفواتير</a>
+            <a href="#" class="nav-item" data-section="ai">الذكرة الذكية</a>
+            <a href="#" class="nav-item" data-section="settings">الإعدادات</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        
+        <!-- Header -->
+        <div class="header-section">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <div class="text-maadid-gold text-2xl">⚖️</div>
+                <div>
+                    <h1 class="text-2xl font-bold">القضايا</h1>
+                    <p class="opacity-90">إدارة ومتابعة الملفات القانونية</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button class="p-2 rounded-lg bg-white/20 hover:bg-white/30">
+                    <i class="fas fa-search"></i>
+                </button>
+                <button class="p-2 rounded-lg bg-white/20 hover:bg-white/30">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <div class="text-right">
+                    <p class="font-semibold">المحامي الأول</p>
+                    <p class="text-sm opacity-75">متصل الآن</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="p-6">
+            
+            <!-- Add New Case Button -->
+            <div class="mb-6">
+                <button onclick="addNewCase()" class="add-case-btn w-full text-center">
+                    <i class="fas fa-plus text-2xl mb-2"></i>
+                    <div class="text-lg">إضافة قضية جديدة</div>
+                </button>
+            </div>
+
+            <!-- Cases List -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                
+                <!-- Left Column - Cases -->
+                <div class="space-y-4">
+                    
+                    <!-- Case 1: Commercial Dispute -->
+                    <div class="case-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">نزاع تجاري</h3>
+                                <p class="text-gray-600">أحمد</p>
+                                <p class="text-sm text-gray-500">2023/10892</p>
+                            </div>
+                            <span class="status-badge status-session">جلسة</span>
+                        </div>
+                        
+                        <div class="flex space-x-3 space-x-reverse">
+                            <button class="flex-1 bg-maadid text-white py-2 rounded-lg hover:bg-maadid-dark">
+                                <i class="fas fa-eye ml-2"></i>
+                                عرض التفاصيل
+                            </button>
+                            <button class="px-4 py-2 border border-maadid text-maadid rounded-lg hover:bg-maadid hover:text-white">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 2: Contracts -->
+                    <div class="case-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">عقود</h3>
+                                <p class="text-gray-600">فلغيرة</p>
+                                <p class="text-sm text-gray-500">20222/874</p>
+                            </div>
+                            <span class="status-badge status-reference">مرجعية</span>
+                        </div>
+                        
+                        <div class="flex space-x-3 space-x-reverse">
+                            <button class="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600">
+                                <i class="fas fa-file ml-2"></i>
+                                مراجعة العقد
+                            </button>
+                            <button class="px-4 py-2 border border-gray-500 text-gray-500 rounded-lg hover:bg-gray-500 hover:text-white">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 3: Administrative -->
+                    <div class="case-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">إدارية</h3>
+                                <p class="text-gray-600">عبد التسجيل</p>
+                                <p class="text-sm text-gray-500">2023/1147</p>
+                            </div>
+                            <span class="status-badge status-registration">قيد التسجيل</span>
+                        </div>
+                        
+                        <div class="flex space-x-3 space-x-reverse">
+                            <button class="flex-1 bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600">
+                                <i class="fas fa-clock ml-2"></i>
+                                متابعة التسجيل
+                            </button>
+                            <button class="px-4 py-2 border border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-white">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 4: Criminal -->
+                    <div class="case-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">قضية جزائية</h3>
+                                <p class="text-gray-600">نورة المتزي</p>
+                                <p class="text-sm text-gray-500">2022/551</p>
+                            </div>
+                            <span class="status-badge status-appeal">استئناف</span>
+                        </div>
+                        
+                        <div class="flex space-x-3 space-x-reverse">
+                            <button class="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600">
+                                <i class="fas fa-balance-scale ml-2"></i>
+                                معالجة الاستئناف
+                            </button>
+                            <button class="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Case 5: Debts -->
+                    <div class="case-card">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-gray-800">ديون</h3>
+                                <p class="text-gray-600">خالد السالم</p>
+                                <p class="text-sm text-gray-500">2021/493</p>
+                            </div>
+                            <span class="status-badge status-session">جلسة</span>
+                        </div>
+                        
+                        <div class="flex space-x-3 space-x-reverse">
+                            <button class="flex-1 bg-maadid text-white py-2 rounded-lg hover:bg-maadid-dark">
+                                <i class="fas fa-calendar-check ml-2"></i>
+                                حضور الجلسة
+                            </button>
+                            <button class="px-4 py-2 border border-maadid text-maadid rounded-lg hover:bg-maadid hover:text-white">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Next Session Timer -->
+                <div class="lg:sticky lg:top-6">
+                    <div class="countdown-timer">
+                        <div class="flex items-center justify-center mb-4">
+                            <i class="fas fa-clock text-maadid-gold text-2xl ml-2"></i>
+                            <h3 class="text-lg font-bold">الجلسة القادمة</h3>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <div class="text-6xl font-bold mb-2" id="daysCounter">26</div>
+                            <div class="text-lg opacity-90">يوم</div>
+                        </div>
+                        
+                        <div class="timer-display mb-4" id="timeDisplay">09:05:30</div>
+                        
+                        <div class="text-sm opacity-90 mb-6">محكمة الرياض التجارية</div>
+                        
+                        <div class="space-y-3">
+                            <button onclick="setReminder()" class="w-full bg-white/20 text-white py-3 rounded-lg hover:bg-white/30 transition-colors">
+                                <i class="fas fa-bell ml-2"></i>
+                                تعيين تذكير
+                            </button>
+                            
+                            <button onclick="viewSessionDetails()" class="w-full bg-maadid-gold text-maadid py-3 rounded-lg hover:bg-yellow-500 transition-colors">
+                                <i class="fas fa-info-circle ml-2"></i>
+                                تفاصيل الجلسة
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Stats -->
+                    <div class="mt-6 bg-white rounded-lg p-6 shadow-sm">
+                        <h3 class="font-bold mb-4 text-gray-800">إحصائيات سريعة</h3>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">قضايا نشطة:</span>
+                                <span class="font-bold text-maadid">12</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">جلسات هذا الأسبوع:</span>
+                                <span class="font-bold text-blue-600">4</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">مهام معلقة:</span>
+                                <span class="font-bold text-red-600">7</span>
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <span class="text-gray-600">فواتير مستحقة:</span>
+                                <span class="font-bold text-yellow-600">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Add Case Modal -->
+    <div id="addCaseModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg p-8 max-w-2xl w-full mx-4 max-h-screen overflow-y-auto">
+            <div class="text-center mb-6">
+                <div class="w-16 h-16 bg-maadid/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i class="fas fa-gavel text-maadid text-2xl"></i>
+                </div>
+                <h2 class="text-2xl font-bold text-gray-800">إضافة قضية جديدة</h2>
+            </div>
+            
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">نوع القضية:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                            <option>نزاع تجاري</option>
+                            <option>عقود</option>
+                            <option>قضية إدارية</option>
+                            <option>قضية جزائية</option>
+                            <option>ديون</option>
+                            <option>نزاع عمالي</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">اسم العميل:</label>
+                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="أدخل اسم العميل">
+                    </div>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">المحامي المسؤول:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                            <option>أحمد المحامي</option>
+                            <option>سارة المحامية</option>
+                            <option>خالد المستشار</option>
+                            <option>نورة الخبيرة</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">رقم القضية:</label>
+                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="2024/xxxx">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">وصف القضية:</label>
+                    <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" rows="4" placeholder="تفاصيل موجزة عن القضية والخلفية..."></textarea>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">الحالة:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                            <option>جلسة</option>
+                            <option>مرجعية</option>
+                            <option>قيد التسجيل</option>
+                            <option>استئناف</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">الأولوية:</label>
+                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                            <option>عالية</option>
+                            <option>متوسطة</option>
+                            <option>منخفضة</option>
+                        </select>
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">تاريخ الجلسة القادمة:</label>
+                        <input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                    </div>
+                </div>
+                
+                <div class="flex space-x-4 space-x-reverse pt-6">
+                    <button type="button" onclick="closeModal()" class="flex-1 bg-gray-500 text-white py-3 rounded-lg hover:bg-gray-600 transition-colors">
+                        <i class="fas fa-times ml-2"></i>
+                        إلغاء
+                    </button>
+                    <button type="submit" onclick="saveCase(event)" class="flex-1 bg-maadid text-white py-3 rounded-lg hover:bg-maadid-dark transition-colors">
+                        <i class="fas fa-save ml-2"></i>
+                        حفظ القضية
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const nextSessionDate = (() => {
+            const date = new Date();
+            date.setDate(date.getDate() + 26);
+            date.setHours(9, 30, 0, 0);
+            return date;
+        })();
+
+        // Navigation System
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active nav
+                document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+                item.classList.add('active');
+                
+                // Handle section switching
+                const section = item.dataset.section;
+                handleSectionChange(section);
+            });
+        });
+
+        function handleSectionChange(section) {
+            // إخفاء جميع المحتويات
+            document.querySelectorAll('.content-section').forEach(sec => {
+                sec.classList.add('hidden');
+            });
+            
+            // إظهار المحتوى المطلوب
+            const targetSection = document.getElementById(`section-${section}`);
+            if (targetSection) {
+                targetSection.classList.remove('hidden');
+            } else {
+                // إنشاء المحتوى إذا لم يكن موجوداً
+                createSectionContent(section);
+            }
+            
+            showNotification(`تم الانتقال إلى قسم ${section}`, 'info');
+        }
+
+        function createSectionContent(section) {
+            const container = document.createElement('section');
+            container.id = `section-${section}`;
+            container.className = 'content-section hidden p-6';
+            container.innerHTML = `
+                <div class="bg-white border border-gray-200 rounded-lg p-6 text-gray-700">
+                    <h2 class="text-xl font-bold mb-3">${section}</h2>
+                    <p class="text-gray-500">لا يوجد محتوى بعد لهذا القسم.</p>
+                </div>
+            `;
+            document.querySelector('.main-content').appendChild(container);
+        }
+
+        // Timer System
+        function updateTimer() {
+            const now = new Date();
+            const timeDiff = nextSessionDate - now;
+            
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                
+                document.getElementById('daysCounter').textContent = days;
+                document.getElementById('timeDisplay').textContent = 
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+        }
+
+        // Modal Functions
+        function addNewCase() {
+            document.getElementById('addCaseModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('addCaseModal').classList.add('hidden');
+        }
+
+        function saveCase(event) {
+            event.preventDefault();
+            
+            // Simulate saving
+            closeModal();
+            showNotification('تم حفظ القضية الجديدة بنجاح!', 'success');
+            
+            // Add to cases list
+            setTimeout(() => {
+                location.reload(); // Refresh to show new case
+            }, 1500);
+        }
+
+        // Utility Functions
+        function setReminder() {
+            showNotification('تم تعيين تذكير للجلسة القادمة', 'success');
+        }
+
+        function viewSessionDetails() {
+            showNotification('عرض تفاصيل الجلسة', 'info');
+        }
+
+        function showNotification(message, type = 'info') {
+            const colors = {
+                success: 'bg-green-500',
+                error: 'bg-red-500',
+                info: 'bg-maadid',
+                warning: 'bg-yellow-500'
+            };
+            
+            const notification = document.createElement('div');
+            notification.className = `fixed top-6 right-6 ${colors[type]} text-white px-6 py-4 rounded-lg shadow-lg z-50 transform translate-x-full transition-transform duration-300`;
+            notification.innerHTML = `
+                <div class="flex items-center space-x-3 space-x-reverse">
+                    <span>${message}</span>
+                    <button onclick="this.closest('.fixed').remove()" class="text-white/80 hover:text-white">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.remove('translate-x-full'), 100);
+            setTimeout(() => {
+                notification.classList.add('translate-x-full');
+                setTimeout(() => notification.remove(), 300);
+            }, 4000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            // Start timer
+            setInterval(updateTimer, 1000);
+            updateTimer();
+            
+            // Welcome message
+            setTimeout(() => {
+                showNotification('مرحباً بك في نظام معاضد القانوني', 'success');
+            }, 1000);
+        });
+
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.ctrlKey || e.metaKey) {
+                switch(e.key) {
+                    case 'n':
+                        e.preventDefault();
+                        addNewCase();
+                        break;
+                    case 'Escape':
+                        closeModal();
+                        break;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
