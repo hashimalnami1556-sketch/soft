@@ -203,7 +203,7 @@
 
         <!-- Content Area -->
         <div class="p-6">
-            
+
             <!-- Add New Case Button -->
             <div class="mb-6">
                 <button onclick="addNewCase()" class="add-case-btn w-full text-center">
@@ -214,120 +214,9 @@
 
             <!-- Cases List -->
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                
+
                 <!-- Left Column - Cases -->
-                <div class="space-y-4">
-                    
-                    <!-- Case 1: Commercial Dispute -->
-                    <div class="case-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800">نزاع تجاري</h3>
-                                <p class="text-gray-600">أحمد</p>
-                                <p class="text-sm text-gray-500">2023/10892</p>
-                            </div>
-                            <span class="status-badge status-session">جلسة</span>
-                        </div>
-                        
-                        <div class="flex space-x-3 space-x-reverse">
-                            <button class="flex-1 bg-maadid text-white py-2 rounded-lg hover:bg-maadid-dark">
-                                <i class="fas fa-eye ml-2"></i>
-                                عرض التفاصيل
-                            </button>
-                            <button class="px-4 py-2 border border-maadid text-maadid rounded-lg hover:bg-maadid hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Case 2: Contracts -->
-                    <div class="case-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800">عقود</h3>
-                                <p class="text-gray-600">فلغيرة</p>
-                                <p class="text-sm text-gray-500">20222/874</p>
-                            </div>
-                            <span class="status-badge status-reference">مرجعية</span>
-                        </div>
-                        
-                        <div class="flex space-x-3 space-x-reverse">
-                            <button class="flex-1 bg-gray-500 text-white py-2 rounded-lg hover:bg-gray-600">
-                                <i class="fas fa-file ml-2"></i>
-                                مراجعة العقد
-                            </button>
-                            <button class="px-4 py-2 border border-gray-500 text-gray-500 rounded-lg hover:bg-gray-500 hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Case 3: Administrative -->
-                    <div class="case-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800">إدارية</h3>
-                                <p class="text-gray-600">عبد التسجيل</p>
-                                <p class="text-sm text-gray-500">2023/1147</p>
-                            </div>
-                            <span class="status-badge status-registration">قيد التسجيل</span>
-                        </div>
-                        
-                        <div class="flex space-x-3 space-x-reverse">
-                            <button class="flex-1 bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600">
-                                <i class="fas fa-clock ml-2"></i>
-                                متابعة التسجيل
-                            </button>
-                            <button class="px-4 py-2 border border-yellow-500 text-yellow-500 rounded-lg hover:bg-yellow-500 hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Case 4: Criminal -->
-                    <div class="case-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800">قضية جزائية</h3>
-                                <p class="text-gray-600">نورة المتزي</p>
-                                <p class="text-sm text-gray-500">2022/551</p>
-                            </div>
-                            <span class="status-badge status-appeal">استئناف</span>
-                        </div>
-                        
-                        <div class="flex space-x-3 space-x-reverse">
-                            <button class="flex-1 bg-red-500 text-white py-2 rounded-lg hover:bg-red-600">
-                                <i class="fas fa-balance-scale ml-2"></i>
-                                معالجة الاستئناف
-                            </button>
-                            <button class="px-4 py-2 border border-red-500 text-red-500 rounded-lg hover:bg-red-500 hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Case 5: Debts -->
-                    <div class="case-card">
-                        <div class="flex justify-between items-start mb-4">
-                            <div>
-                                <h3 class="text-xl font-bold text-gray-800">ديون</h3>
-                                <p class="text-gray-600">خالد السالم</p>
-                                <p class="text-sm text-gray-500">2021/493</p>
-                            </div>
-                            <span class="status-badge status-session">جلسة</span>
-                        </div>
-                        
-                        <div class="flex space-x-3 space-x-reverse">
-                            <button class="flex-1 bg-maadid text-white py-2 rounded-lg hover:bg-maadid-dark">
-                                <i class="fas fa-calendar-check ml-2"></i>
-                                حضور الجلسة
-                            </button>
-                            <button class="px-4 py-2 border border-maadid text-maadid rounded-lg hover:bg-maadid hover:text-white">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                <div id="casesList" class="space-y-4"></div>
 
                 <!-- Right Column - Next Session Timer -->
                 <div class="lg:sticky lg:top-6">
@@ -336,48 +225,48 @@
                             <i class="fas fa-clock text-maadid-gold text-2xl ml-2"></i>
                             <h3 class="text-lg font-bold">الجلسة القادمة</h3>
                         </div>
-                        
+
                         <div class="mb-4">
                             <div class="text-6xl font-bold mb-2" id="daysCounter">26</div>
                             <div class="text-lg opacity-90">يوم</div>
                         </div>
-                        
+
                         <div class="timer-display mb-4" id="timeDisplay">09:05:30</div>
-                        
+
                         <div class="text-sm opacity-90 mb-6">محكمة الرياض التجارية</div>
-                        
+
                         <div class="space-y-3">
                             <button onclick="setReminder()" class="w-full bg-white/20 text-white py-3 rounded-lg hover:bg-white/30 transition-colors">
                                 <i class="fas fa-bell ml-2"></i>
                                 تعيين تذكير
                             </button>
-                            
+
                             <button onclick="viewSessionDetails()" class="w-full bg-maadid-gold text-maadid py-3 rounded-lg hover:bg-yellow-500 transition-colors">
                                 <i class="fas fa-info-circle ml-2"></i>
                                 تفاصيل الجلسة
                             </button>
                         </div>
                     </div>
-                    
+
                     <!-- Quick Stats -->
-                    <div class="mt-6 bg-white rounded-lg p-6 shadow-sm">
+                    <div class="mt-6 bg-white rounded-lg p-6 shadow-sm" aria-live="polite">
                         <h3 class="font-bold mb-4 text-gray-800">إحصائيات سريعة</h3>
-                        <div class="space-y-3">
+                        <div class="space-y-3" id="statsContainer">
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">قضايا نشطة:</span>
-                                <span class="font-bold text-maadid">12</span>
+                                <span class="font-bold text-maadid" id="activeCasesCount">0</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">جلسات هذا الأسبوع:</span>
-                                <span class="font-bold text-blue-600">4</span>
+                                <span class="font-bold text-blue-600" id="sessionsCount">0</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">مهام معلقة:</span>
-                                <span class="font-bold text-red-600">7</span>
+                                <span class="font-bold text-red-600" id="pendingTasksCount">0</span>
                             </div>
                             <div class="flex justify-between items-center">
                                 <span class="text-gray-600">فواتير مستحقة:</span>
-                                <span class="font-bold text-yellow-600">3</span>
+                                <span class="font-bold text-yellow-600" id="invoicesCount">0</span>
                             </div>
                         </div>
                     </div>
@@ -396,11 +285,11 @@
                 <h2 class="text-2xl font-bold text-gray-800">إضافة قضية جديدة</h2>
             </div>
             
-            <form class="space-y-6">
+            <form id="caseForm" class="space-y-6">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">نوع القضية:</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                        <select id="caseType" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" required>
                             <option>نزاع تجاري</option>
                             <option>عقود</option>
                             <option>قضية إدارية</option>
@@ -409,58 +298,58 @@
                             <option>نزاع عمالي</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">اسم العميل:</label>
-                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="أدخل اسم العميل">
+                        <input id="clientName" type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="أدخل اسم العميل" required>
                     </div>
                 </div>
-                
+
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">المحامي المسؤول:</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                        <select id="lawyer" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
                             <option>أحمد المحامي</option>
                             <option>سارة المحامية</option>
                             <option>خالد المستشار</option>
                             <option>نورة الخبيرة</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">رقم القضية:</label>
-                        <input type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="2024/xxxx">
+                        <input id="caseNumber" type="text" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" placeholder="2024/xxxx" required>
                     </div>
                 </div>
-                
+
                 <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">وصف القضية:</label>
-                    <textarea class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" rows="4" placeholder="تفاصيل موجزة عن القضية والخلفية..."></textarea>
+                    <textarea id="caseDescription" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent" rows="4" placeholder="تفاصيل موجزة عن القضية والخلفية..."></textarea>
                 </div>
                 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">الحالة:</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                        <select id="caseStatus" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
                             <option>جلسة</option>
                             <option>مرجعية</option>
                             <option>قيد التسجيل</option>
                             <option>استئناف</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">الأولوية:</label>
-                        <select class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                        <select id="casePriority" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
                             <option>عالية</option>
                             <option>متوسطة</option>
                             <option>منخفضة</option>
                         </select>
                     </div>
-                    
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 mb-2">تاريخ الجلسة القادمة:</label>
-                        <input type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
+                        <input id="sessionDate" type="date" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-maadid focus:border-transparent">
                     </div>
                 </div>
                 
@@ -479,12 +368,80 @@
     </div>
 
     <script>
-        const nextSessionDate = (() => {
-            const date = new Date();
-            date.setDate(date.getDate() + 26);
-            date.setHours(9, 30, 0, 0);
-            return date;
-        })();
+        const statusStyles = {
+            'جلسة': {
+                badge: 'status-badge status-session',
+                actionBg: 'bg-maadid',
+                actionHover: 'hover:bg-maadid-dark',
+                outline: 'border-maadid text-maadid hover:bg-maadid hover:text-white'
+            },
+            'مرجعية': {
+                badge: 'status-badge status-reference',
+                actionBg: 'bg-gray-500',
+                actionHover: 'hover:bg-gray-600',
+                outline: 'border-gray-500 text-gray-500 hover:bg-gray-500 hover:text-white'
+            },
+            'قيد التسجيل': {
+                badge: 'status-badge status-registration',
+                actionBg: 'bg-yellow-500',
+                actionHover: 'hover:bg-yellow-600',
+                outline: 'border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-white'
+            },
+            'استئناف': {
+                badge: 'status-badge status-appeal',
+                actionBg: 'bg-red-500',
+                actionHover: 'hover:bg-red-600',
+                outline: 'border-red-500 text-red-500 hover:bg-red-500 hover:text-white'
+            }
+        };
+
+        const casesData = [
+            {
+                type: 'نزاع تجاري',
+                client: 'أحمد',
+                number: '2023/10892',
+                status: 'جلسة',
+                priority: 'عالية',
+                nextSession: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 26, 9, 30),
+                action: { label: 'عرض التفاصيل', icon: 'fa-eye' }
+            },
+            {
+                type: 'عقود',
+                client: 'فلغيرة',
+                number: '20222/874',
+                status: 'مرجعية',
+                priority: 'متوسطة',
+                nextSession: null,
+                action: { label: 'مراجعة العقد', icon: 'fa-file' }
+            },
+            {
+                type: 'إدارية',
+                client: 'عبد التسجيل',
+                number: '2023/1147',
+                status: 'قيد التسجيل',
+                priority: 'عالية',
+                nextSession: null,
+                action: { label: 'متابعة التسجيل', icon: 'fa-clock' }
+            },
+            {
+                type: 'قضية جزائية',
+                client: 'نورة المتزي',
+                number: '2022/551',
+                status: 'استئناف',
+                priority: 'متوسطة',
+                nextSession: null,
+                action: { label: 'معالجة الاستئناف', icon: 'fa-balance-scale' }
+            },
+            {
+                type: 'ديون',
+                client: 'خالد السالم',
+                number: '2021/493',
+                status: 'جلسة',
+                priority: 'منخفضة',
+                nextSession: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 32, 11, 0),
+                action: { label: 'حضور الجلسة', icon: 'fa-calendar-check' }
+            }
+        ];
 
         // Navigation System
         document.querySelectorAll('.nav-item').forEach(item => {
@@ -532,19 +489,83 @@
             document.querySelector('.main-content').appendChild(container);
         }
 
+        // Rendering helpers
+        function renderCaseCard(caseItem) {
+            const styles = statusStyles[caseItem.status] || statusStyles['مرجعية'];
+            const primaryActionLabel = caseItem.action?.label || 'عرض التفاصيل';
+            const primaryIcon = caseItem.action?.icon || 'fa-eye';
+
+            return `
+                <div class="case-card">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-800">${caseItem.type}</h3>
+                            <p class="text-gray-600">${caseItem.client}</p>
+                            <p class="text-sm text-gray-500">${caseItem.number}</p>
+                        </div>
+                        <span class="${styles.badge}">${caseItem.status}</span>
+                    </div>
+
+                    <div class="flex space-x-3 space-x-reverse">
+                        <button class="flex-1 ${styles.actionBg} ${styles.actionHover} text-white py-2 rounded-lg transition-colors">
+                            <i class="fas ${primaryIcon} ml-2"></i>
+                            ${primaryActionLabel}
+                        </button>
+                        <button class="px-4 py-2 border ${styles.outline} rounded-lg transition-colors">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderCases() {
+            const list = document.getElementById('casesList');
+            list.innerHTML = casesData.map(renderCaseCard).join('');
+        }
+
+        function renderStats() {
+            const activeCases = casesData.length;
+            const sessionsThisWeek = casesData.filter(c => c.status === 'جلسة').length;
+            const pendingTasks = casesData.filter(c => c.priority === 'عالية').length;
+            const pendingInvoices = casesData.filter(c => c.status === 'قيد التسجيل').length;
+
+            document.getElementById('activeCasesCount').textContent = activeCases;
+            document.getElementById('sessionsCount').textContent = sessionsThisWeek;
+            document.getElementById('pendingTasksCount').textContent = pendingTasks;
+            document.getElementById('invoicesCount').textContent = pendingInvoices;
+        }
+
+        function getNextSessionDate() {
+            const now = new Date();
+            const upcoming = casesData
+                .map(c => c.nextSession)
+                .filter(date => date instanceof Date && !Number.isNaN(date) && date > now)
+                .sort((a, b) => a - b);
+
+            return upcoming[0] || null;
+        }
+
         // Timer System
         function updateTimer() {
             const now = new Date();
-            const timeDiff = nextSessionDate - now;
-            
+            const targetDate = getNextSessionDate();
+            if (!targetDate) {
+                document.getElementById('daysCounter').textContent = '--';
+                document.getElementById('timeDisplay').textContent = '--:--:--';
+                return;
+            }
+
+            const timeDiff = targetDate - now;
+
             if (timeDiff > 0) {
                 const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
-                
+
                 document.getElementById('daysCounter').textContent = days;
-                document.getElementById('timeDisplay').textContent = 
+                document.getElementById('timeDisplay').textContent =
                     `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
             }
         }
@@ -560,15 +581,40 @@
 
         function saveCase(event) {
             event.preventDefault();
-            
-            // Simulate saving
+
+            const type = document.getElementById('caseType').value.trim();
+            const client = document.getElementById('clientName').value.trim();
+            const number = document.getElementById('caseNumber').value.trim();
+            const status = document.getElementById('caseStatus').value;
+            const priority = document.getElementById('casePriority').value;
+            const sessionDateValue = document.getElementById('sessionDate').value;
+            const description = document.getElementById('caseDescription').value.trim();
+
+            if (!type || !client || !number) {
+                showNotification('يرجى تعبئة حقول نوع القضية واسم العميل ورقم القضية', 'warning');
+                return;
+            }
+
+            const nextSession = sessionDateValue ? new Date(`${sessionDateValue}T09:30:00`) : null;
+            const actionLabel = status === 'مرجعية' ? 'مراجعة القضية' : 'عرض التفاصيل';
+
+            casesData.unshift({
+                type,
+                client,
+                number,
+                status,
+                priority,
+                nextSession,
+                description,
+                action: { label: actionLabel, icon: 'fa-eye' }
+            });
+
+            renderCases();
+            renderStats();
+            updateTimer();
+            document.getElementById('caseForm').reset();
             closeModal();
             showNotification('تم حفظ القضية الجديدة بنجاح!', 'success');
-            
-            // Add to cases list
-            setTimeout(() => {
-                location.reload(); // Refresh to show new case
-            }, 1500);
         }
 
         // Utility Functions
@@ -610,6 +656,10 @@
 
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('caseForm').addEventListener('submit', saveCase);
+            renderCases();
+            renderStats();
+
             // Start timer
             setInterval(updateTimer, 1000);
             updateTimer();
