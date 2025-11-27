@@ -259,7 +259,7 @@
 
                         <div class="timer-display mb-4" id="timeDisplay">09:05:30</div>
 
-                        <div class="text-sm opacity-90 mb-6">محكمة الرياض التجارية</div>
+                        <div id="sessionMeta" class="text-sm opacity-90 mb-6">لا توجد جلسات مجدولة</div>
 
                         <div class="space-y-3">
                             <button onclick="setReminder()" class="w-full bg-white/20 text-white py-3 rounded-lg hover:bg-white/30 transition-colors">
@@ -593,7 +593,16 @@
 
         function renderStats() {
             const activeCases = casesData.length;
-            const sessionsThisWeek = casesData.filter(c => c.status === 'جلسة').length;
+            const now = new Date();
+            const weekFromNow = new Date(now);
+            weekFromNow.setDate(now.getDate() + 7);
+
+            const sessionsThisWeek = casesData.filter(c => {
+                return c.nextSession instanceof Date
+                    && !Number.isNaN(c.nextSession)
+                    && c.nextSession >= now
+                    && c.nextSession <= weekFromNow;
+            }).length;
             const pendingTasks = casesData.filter(c => c.priority === 'عالية').length;
             const pendingInvoices = casesData.filter(c => c.status === 'قيد التسجيل').length;
 
@@ -603,12 +612,11 @@
             document.getElementById('invoicesCount').textContent = pendingInvoices;
         }
 
-        function getNextSessionDate() {
+        function getNextSession() {
             const now = new Date();
             const upcoming = casesData
-                .map(c => c.nextSession)
-                .filter(date => date instanceof Date && !Number.isNaN(date) && date > now)
-                .sort((a, b) => a - b);
+                .filter(c => c.nextSession instanceof Date && !Number.isNaN(c.nextSession) && c.nextSession > now)
+                .sort((a, b) => a.nextSession - b.nextSession);
 
             return upcoming[0] || null;
         }
@@ -662,14 +670,17 @@
         // Timer System
         function updateTimer() {
             const now = new Date();
-            const targetDate = getNextSessionDate();
-            if (!targetDate) {
+            const nextSession = getNextSession();
+            const meta = document.getElementById('sessionMeta');
+
+            if (!nextSession) {
                 document.getElementById('daysCounter').textContent = '--';
                 document.getElementById('timeDisplay').textContent = '--:--:--';
+                if (meta) meta.textContent = 'لا توجد جلسات مجدولة';
                 return;
             }
 
-            const timeDiff = targetDate - now;
+            const timeDiff = nextSession.nextSession - now;
 
             if (timeDiff > 0) {
                 const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -680,6 +691,7 @@
                 document.getElementById('daysCounter').textContent = days;
                 document.getElementById('timeDisplay').textContent =
                     `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                if (meta) meta.textContent = `${nextSession.type} — ${nextSession.client}`;
             }
         }
 
