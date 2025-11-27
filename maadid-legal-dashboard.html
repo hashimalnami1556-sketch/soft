@@ -204,12 +204,38 @@
         <!-- Content Area -->
         <div class="p-6">
 
-            <!-- Add New Case Button -->
-            <div class="mb-6">
-                <button onclick="addNewCase()" class="add-case-btn w-full text-center">
-                    <i class="fas fa-plus text-2xl mb-2"></i>
-                    <div class="text-lg">إضافة قضية جديدة</div>
-                </button>
+            <!-- Toolbar: filters + add button -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 mb-6">
+                <div class="lg:col-span-2 flex items-center bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                    <i class="fas fa-search text-maadid ml-3"></i>
+                    <input id="caseSearch" type="search" placeholder="بحث باسم العميل، رقم أو نوع القضية" class="flex-1 focus:outline-none" aria-label="بحث في القضايا">
+                </div>
+                <div class="flex items-center bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                    <label for="statusFilter" class="text-sm text-gray-600 ml-2">الحالة</label>
+                    <select id="statusFilter" class="flex-1 bg-transparent focus:outline-none">
+                        <option value="all">الكل</option>
+                        <option value="جلسة">جلسة</option>
+                        <option value="مرجعية">مرجعية</option>
+                        <option value="قيد التسجيل">قيد التسجيل</option>
+                        <option value="استئناف">استئناف</option>
+                    </select>
+                </div>
+                <div class="flex items-center bg-white border border-gray-200 rounded-lg px-4 py-3 shadow-sm">
+                    <label for="priorityFilter" class="text-sm text-gray-600 ml-2">الأولوية</label>
+                    <select id="priorityFilter" class="flex-1 bg-transparent focus:outline-none">
+                        <option value="all">الكل</option>
+                        <option value="عالية">عالية</option>
+                        <option value="متوسطة">متوسطة</option>
+                        <option value="منخفضة">منخفضة</option>
+                    </select>
+                </div>
+                <div class="flex space-x-3 space-x-reverse">
+                    <button id="resetFilters" class="flex-1 border border-maadid text-maadid rounded-lg hover:bg-maadid hover:text-white transition-colors">إعادة التصفية</button>
+                    <button onclick="addNewCase()" class="flex-1 add-case-btn text-center">
+                        <i class="fas fa-plus text-xl mb-1"></i>
+                        <div class="text-base">إضافة قضية</div>
+                    </button>
+                </div>
             </div>
 
             <!-- Cases List -->
@@ -395,7 +421,7 @@
             }
         };
 
-        const casesData = [
+        const defaultCases = [
             {
                 type: 'نزاع تجاري',
                 client: 'أحمد',
@@ -403,6 +429,8 @@
                 status: 'جلسة',
                 priority: 'عالية',
                 nextSession: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 26, 9, 30),
+                lawyer: 'أحمد المحامي',
+                description: 'متابعة نزاع تجاري بخصوص عقد توزيع ونزاع حول الشروط المجددة.',
                 action: { label: 'عرض التفاصيل', icon: 'fa-eye' }
             },
             {
@@ -412,6 +440,8 @@
                 status: 'مرجعية',
                 priority: 'متوسطة',
                 nextSession: null,
+                lawyer: 'سارة المحامية',
+                description: 'مراجعة عقد شراكة وتدقيق بنود إعادة التفاوض.',
                 action: { label: 'مراجعة العقد', icon: 'fa-file' }
             },
             {
@@ -421,6 +451,8 @@
                 status: 'قيد التسجيل',
                 priority: 'عالية',
                 nextSession: null,
+                lawyer: 'خالد المستشار',
+                description: 'ملف إداري لإتمام تسجيل كيان تجاري جديد لدى الجهات المختصة.',
                 action: { label: 'متابعة التسجيل', icon: 'fa-clock' }
             },
             {
@@ -430,6 +462,8 @@
                 status: 'استئناف',
                 priority: 'متوسطة',
                 nextSession: null,
+                lawyer: 'نورة الخبيرة',
+                description: 'استئناف حكم ابتدائي مع إعداد مذكرات تعزز دفوع البراءة.',
                 action: { label: 'معالجة الاستئناف', icon: 'fa-balance-scale' }
             },
             {
@@ -439,9 +473,18 @@
                 status: 'جلسة',
                 priority: 'منخفضة',
                 nextSession: new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate() + 32, 11, 0),
+                lawyer: 'أحمد المحامي',
+                description: 'مطالبة مالية مع جدولة سداد وتحديث ملف الاسترداد.',
                 action: { label: 'حضور الجلسة', icon: 'fa-calendar-check' }
             }
         ];
+
+        let casesData = loadCases();
+        const filters = {
+            search: '',
+            status: 'all',
+            priority: 'all'
+        };
 
         // Navigation System
         document.querySelectorAll('.nav-item').forEach(item => {
@@ -494,6 +537,11 @@
             const styles = statusStyles[caseItem.status] || statusStyles['مرجعية'];
             const primaryActionLabel = caseItem.action?.label || 'عرض التفاصيل';
             const primaryIcon = caseItem.action?.icon || 'fa-eye';
+            const hasSession = caseItem.nextSession instanceof Date && !Number.isNaN(caseItem.nextSession);
+
+            const sessionLabel = hasSession
+                ? `${caseItem.nextSession.toLocaleDateString('ar-EG')} — ${caseItem.nextSession.toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit' })}`
+                : 'لا يوجد موعد محدد';
 
             return `
                 <div class="case-card">
@@ -503,7 +551,23 @@
                             <p class="text-gray-600">${caseItem.client}</p>
                             <p class="text-sm text-gray-500">${caseItem.number}</p>
                         </div>
-                        <span class="${styles.badge}">${caseItem.status}</span>
+                        <div class="text-right space-y-2">
+                            <span class="${styles.badge} block">${caseItem.status}</span>
+                            <span class="inline-block text-xs font-bold px-3 py-1 rounded-full bg-gray-100 text-gray-700">${caseItem.priority}</span>
+                        </div>
+                    </div>
+
+                    ${caseItem.description ? `<p class="text-gray-600 text-sm leading-relaxed mb-3">${caseItem.description}</p>` : ''}
+
+                    <div class="flex items-center justify-between text-sm text-gray-600 mb-4">
+                        <span class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fas fa-calendar-alt text-maadid"></i>
+                            <span>${sessionLabel}</span>
+                        </span>
+                        <span class="flex items-center space-x-2 space-x-reverse">
+                            <i class="fas fa-user-shield text-maadid"></i>
+                            <span>${caseItem.lawyer || '—'}</span>
+                        </span>
                     </div>
 
                     <div class="flex space-x-3 space-x-reverse">
@@ -521,7 +585,10 @@
 
         function renderCases() {
             const list = document.getElementById('casesList');
-            list.innerHTML = casesData.map(renderCaseCard).join('');
+            const filtered = getFilteredCases();
+            list.innerHTML = filtered.length
+                ? filtered.map(renderCaseCard).join('')
+                : `<div class="case-card text-center text-gray-600">لا توجد قضايا مطابقة لخيارات البحث الحالية.</div>`;
         }
 
         function renderStats() {
@@ -544,6 +611,52 @@
                 .sort((a, b) => a - b);
 
             return upcoming[0] || null;
+        }
+
+        function getFilteredCases() {
+            return casesData.filter(c => {
+                const matchesSearch = filters.search
+                    ? [c.type, c.client, c.number, c.description || '']
+                        .some(value => value.toLowerCase().includes(filters.search.toLowerCase()))
+                    : true;
+                const matchesStatus = filters.status === 'all' ? true : c.status === filters.status;
+                const matchesPriority = filters.priority === 'all' ? true : c.priority === filters.priority;
+                return matchesSearch && matchesStatus && matchesPriority;
+            });
+        }
+
+        function persistCases() {
+            const serialized = casesData.map(c => ({
+                ...c,
+                nextSession: c.nextSession ? c.nextSession.toISOString() : null
+            }));
+            localStorage.setItem('maadid-cases', JSON.stringify(serialized));
+        }
+
+        function loadCases() {
+            const saved = localStorage.getItem('maadid-cases');
+            if (!saved) return [...defaultCases];
+
+            try {
+                const parsed = JSON.parse(saved);
+                return parsed.map(c => ({
+                    ...c,
+                    nextSession: c.nextSession ? new Date(c.nextSession) : null
+                }));
+            } catch (error) {
+                console.warn('تعذر قراءة القضايا المحفوظة، سيتم استخدام البيانات الافتراضية.', error);
+                return [...defaultCases];
+            }
+        }
+
+        function resetFilters() {
+            filters.search = '';
+            filters.status = 'all';
+            filters.priority = 'all';
+            document.getElementById('caseSearch').value = '';
+            document.getElementById('statusFilter').value = 'all';
+            document.getElementById('priorityFilter').value = 'all';
+            renderCases();
         }
 
         // Timer System
@@ -589,6 +702,7 @@
             const priority = document.getElementById('casePriority').value;
             const sessionDateValue = document.getElementById('sessionDate').value;
             const description = document.getElementById('caseDescription').value.trim();
+            const lawyer = document.getElementById('lawyer').value;
 
             if (!type || !client || !number) {
                 showNotification('يرجى تعبئة حقول نوع القضية واسم العميل ورقم القضية', 'warning');
@@ -606,9 +720,11 @@
                 priority,
                 nextSession,
                 description,
+                lawyer,
                 action: { label: actionLabel, icon: 'fa-eye' }
             });
 
+            persistCases();
             renderCases();
             renderStats();
             updateTimer();
@@ -657,8 +773,25 @@
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('caseForm').addEventListener('submit', saveCase);
+            document.getElementById('caseSearch').addEventListener('input', (e) => {
+                filters.search = e.target.value;
+                renderCases();
+            });
+            document.getElementById('statusFilter').addEventListener('change', (e) => {
+                filters.status = e.target.value;
+                renderCases();
+            });
+            document.getElementById('priorityFilter').addEventListener('change', (e) => {
+                filters.priority = e.target.value;
+                renderCases();
+            });
+            document.getElementById('resetFilters').addEventListener('click', (e) => {
+                e.preventDefault();
+                resetFilters();
+            });
             renderCases();
             renderStats();
+            persistCases();
 
             // Start timer
             setInterval(updateTimer, 1000);
