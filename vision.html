@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تنظيف الخط اليدوي - Google Vision API</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900">
+  <main class="max-w-5xl mx-auto px-4 py-10">
+    <header class="text-center space-y-3">
+      <span class="inline-flex items-center gap-2 rounded-full bg-blue-100 text-blue-700 px-4 py-1 text-sm font-semibold">
+        Google Vision API
+      </span>
+      <h1 class="text-3xl font-bold">تطبيق لتحويل الخط السيء إلى نص واضح</h1>
+      <p class="text-slate-600">
+        ارفع صورة بخط يد غير واضح وسنستخدم Google Vision API لاستخراج النص ثم عرضه بشكل مرتب.
+      </p>
+    </header>
+
+    <section class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
+      <div class="bg-white shadow-sm rounded-2xl p-6 space-y-6">
+        <div class="space-y-2 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-700">
+          يشترط تشغيل خادم محلي يحمي مفتاح Google Vision API ويستقبل الطلبات على المسار
+          <span class="font-semibold">/api/vision</span>.
+          هذا يمنع مشاكل الحظر عبر المتصفح ويحافظ على أمان المفتاح.
+        </div>
+
+        <div class="space-y-2">
+          <label class="font-semibold">صورة الخط اليدوي</label>
+          <input
+            id="imageInput"
+            type="file"
+            accept="image/*"
+            class="block w-full text-sm text-slate-600 file:mr-4 file:rounded-xl file:border-0 file:bg-blue-600 file:px-4 file:py-2 file:text-white hover:file:bg-blue-700"
+          />
+        </div>
+
+        <div class="flex flex-col gap-3 sm:flex-row">
+          <button
+            id="scanButton"
+            class="flex-1 rounded-xl bg-blue-600 px-4 py-3 text-white font-semibold hover:bg-blue-700 disabled:opacity-60"
+          >
+            مسح النص الآن
+          </button>
+          <button
+            id="resetButton"
+            class="flex-1 rounded-xl border border-slate-300 px-4 py-3 font-semibold text-slate-700 hover:bg-slate-100"
+          >
+            إعادة ضبط
+          </button>
+        </div>
+
+        <div id="status" class="hidden rounded-xl bg-slate-100 px-4 py-3 text-sm text-slate-600"></div>
+
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="rounded-xl border border-dashed border-slate-300 p-3 text-center text-sm text-slate-500">
+            <img id="preview" alt="معاينة الصورة" class="hidden mx-auto max-h-52 rounded-lg" />
+            <p id="previewPlaceholder">ستظهر المعاينة هنا بعد اختيار صورة.</p>
+          </div>
+          <div class="rounded-xl border border-slate-200 p-3 text-sm text-slate-600 space-y-2">
+            <p class="font-semibold">نصائح لتحسين الدقة</p>
+            <ul class="list-disc list-inside space-y-1">
+              <li>التقط الصورة بإضاءة جيدة ومن دون ظلال.</li>
+              <li>اجعل الورقة مستقيمة قدر الإمكان.</li>
+              <li>تأكد من وضوح الحروف وعدم وجود ضبابية.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-white shadow-sm rounded-2xl p-6 space-y-6">
+        <div>
+          <div class="flex items-center justify-between">
+            <h2 class="text-lg font-semibold">النص المستخرج</h2>
+            <button
+              id="copyButton"
+              class="text-sm text-blue-600 hover:text-blue-700"
+              type="button"
+            >
+              نسخ النص
+            </button>
+          </div>
+          <textarea
+            id="rawText"
+            rows="8"
+            class="mt-3 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="سيظهر النص الخام هنا بعد المسح"
+          ></textarea>
+        </div>
+
+        <div>
+          <h2 class="text-lg font-semibold">النص المنسق (تنظيف الخط السيء)</h2>
+          <textarea
+            id="cleanText"
+            rows="8"
+            class="mt-3 w-full rounded-xl border border-slate-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400"
+            placeholder="سيظهر النص بعد التنسيق هنا"
+          ></textarea>
+          <p class="text-xs text-slate-500 mt-2">
+            نقوم بإزالة الفراغات الزائدة وتوحيد الأسطر لتسهيل القراءة.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const imageInput = document.getElementById('imageInput');
+    const scanButton = document.getElementById('scanButton');
+    const resetButton = document.getElementById('resetButton');
+    const statusBox = document.getElementById('status');
+    const preview = document.getElementById('preview');
+    const previewPlaceholder = document.getElementById('previewPlaceholder');
+    const rawText = document.getElementById('rawText');
+    const cleanText = document.getElementById('cleanText');
+    const copyButton = document.getElementById('copyButton');
+
+    const showStatus = (message, type = 'info') => {
+      statusBox.classList.remove('hidden');
+      statusBox.textContent = message;
+      statusBox.className = 'rounded-xl px-4 py-3 text-sm';
+
+      if (type === 'error') {
+        statusBox.classList.add('bg-red-100', 'text-red-700');
+      } else if (type === 'success') {
+        statusBox.classList.add('bg-green-100', 'text-green-700');
+      } else {
+        statusBox.classList.add('bg-slate-100', 'text-slate-600');
+      }
+    };
+
+    const resetForm = () => {
+      imageInput.value = '';
+      rawText.value = '';
+      cleanText.value = '';
+      preview.src = '';
+      preview.classList.add('hidden');
+      previewPlaceholder.classList.remove('hidden');
+      statusBox.classList.add('hidden');
+    };
+
+    const formatExtractedText = (text) => {
+      return text
+        .replace(/\s+/g, ' ')
+        .replace(/\s?\n\s?/g, '\n')
+        .replace(/\n{2,}/g, '\n')
+        .trim();
+    };
+
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        preview.src = event.target.result;
+        preview.classList.remove('hidden');
+        previewPlaceholder.classList.add('hidden');
+      };
+      reader.readAsDataURL(file);
+    });
+
+    scanButton.addEventListener('click', async () => {
+      const file = imageInput.files[0];
+
+      if (!file) {
+        showStatus('يرجى اختيار صورة بخط اليد قبل المسح.', 'error');
+        return;
+      }
+
+      scanButton.disabled = true;
+      showStatus('جارٍ رفع الصورة وتحليلها...', 'info');
+
+      try {
+        const base64Image = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => {
+            const result = reader.result;
+            const base64 = result.split(',')[1];
+            resolve(base64);
+          };
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+
+        const response = await fetch('/api/vision', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            image: base64Image,
+            languageHints: ['ar', 'en']
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('تعذر الاتصال بالخادم المحلي. تأكد من تشغيله وتفعيل Google Vision API.');
+        }
+
+        const data = await response.json();
+        const extracted = data?.text || '';
+
+        rawText.value = extracted || 'لم يتم العثور على نص.';
+        cleanText.value = extracted ? formatExtractedText(extracted) : '';
+
+        showStatus('تم استخراج النص بنجاح.', 'success');
+      } catch (error) {
+        showStatus(error.message || 'حدث خطأ غير متوقع أثناء المسح.', 'error');
+      } finally {
+        scanButton.disabled = false;
+      }
+    });
+
+    resetButton.addEventListener('click', resetForm);
+
+    copyButton.addEventListener('click', () => {
+      if (!cleanText.value) {
+        showStatus('لا يوجد نص لنسخه بعد.', 'error');
+        return;
+      }
+
+      navigator.clipboard.writeText(cleanText.value)
+        .then(() => showStatus('تم نسخ النص المنسق.', 'success'))
+        .catch(() => showStatus('تعذر نسخ النص. حاول مرة أخرى.', 'error'));
+    });
+  </script>
+</body>
+</html>

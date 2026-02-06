@@ -1,0 +1,14 @@
+{
+  "name": "soft-vision-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local proxy for Google Vision API handwriting cleanup app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "node-fetch": "^2.6.12"
+  }
+}
