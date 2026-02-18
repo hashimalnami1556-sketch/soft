@@ -46,7 +46,60 @@ No project-specific setup is required. Install the tools you need to inspect or 
 - [openpyxl](https://openpyxl.readthedocs.io/) for Excel support
 - [pyodbc](https://github.com/mkleehammer/pyodbc) and the [Access Database Engine](https://learn.microsoft.com/en-us/office/troubleshoot/access/database-engine-installation) for `.accdb` files.
 
+## Handwriting Cleanup App (Google Vision API)
+
+This repository includes `vision.html` plus a Node.js proxy (`server.js`) for OCR with Google Vision API.
+
+### Run locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Start server (recommended with env key):
+   ```bash
+   export GOOGLE_VISION_API_KEY="YOUR_KEY"
+   npm start
+   ```
+3. Open:
+   ```bash
+   http://localhost:8000/vision.html
+   ```
+
+### Connection modes in UI
+
+- `auto`: checks local server first, then falls back to direct Google call.
+- `proxy`: forces `/api/vision`.
+- `direct`: calls Google Vision from browser and requires form API key.
+
+Notes:
+- UI is self-styled with local CSS (no Tailwind CDN dependency), so it renders correctly even with restricted internet.
+- Do not open `vision.html` via `file://` when using `auto/proxy`.
+- If no server key is configured, you can still paste API key in the form.
+
+### Build executable (.exe)
+
+You can package the app as a standalone executable using [`pkg`](https://www.npmjs.com/package/pkg).
+
+1. Install dependencies (includes `pkg`):
+   ```bash
+   npm install
+   ```
+2. Build Windows `.exe`:
+   ```bash
+   npm run build:win-exe
+   ```
+3. Output file:
+   ```bash
+   dist/vision-app.exe
+   ```
+
+Optional Linux build:
+```bash
+npm run build:linux-bin
+```
+
+
 ## Purpose
 
 The repository serves as a shared data drop for spreadsheet-based financial and import records. Contributors can upload new data files or process existing ones for reporting and analysis.
-

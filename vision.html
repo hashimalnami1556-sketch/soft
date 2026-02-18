@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تنظيف الخط اليدوي - Google Vision API</title>
+  <style>
+    :root {
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #475569;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --border: #cbd5e1;
+      --danger-bg: #fee2e2;
+      --danger-text: #b91c1c;
+      --ok-bg: #dcfce7;
+      --ok-text: #166534;
+      --info-bg: #e2e8f0;
+      --info-text: #334155;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Tahoma, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+
+    .header { text-align: center; margin-bottom: 24px; }
+    .header h1 { margin: 8px 0; font-size: 28px; }
+    .header p { color: var(--muted); margin: 0; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px;
+    }
+
+    .hint {
+      border: 1px solid #bfdbfe;
+      background: #eff6ff;
+      color: #1e40af;
+      border-radius: 10px;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
+
+    .field { margin-bottom: 12px; }
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+    }
+
+    input, select, textarea, button {
+      font: inherit;
+    }
+
+    input[type="password"], select, textarea {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      background: white;
+      color: var(--text);
+    }
+
+    input[type="file"] {
+      width: 100%;
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      background: #f8fafc;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .btn {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px;
+      cursor: pointer;
+      background: #fff;
+    }
+    .btn-primary {
+      border-color: var(--primary);
+      background: var(--primary);
+      color: white;
+      font-weight: 700;
+    }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn:disabled { opacity: .6; cursor: not-allowed; }
+
+    .status {
+      display: none;
+      border-radius: 10px;
+      padding: 10px;
+      margin-bottom: 10px;
+      font-size: 14px;
+    }
+    .status.show { display: block; }
+    .status.info { background: var(--info-bg); color: var(--info-text); }
+    .status.error { background: var(--danger-bg); color: var(--danger-text); }
+    .status.success { background: var(--ok-bg); color: var(--ok-text); }
+
+    .preview {
+      border: 1px dashed var(--border);
+      border-radius: 10px;
+      min-height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: var(--muted);
+      padding: 10px;
+      margin-bottom: 8px;
+      background: #f8fafc;
+    }
+    .preview img { max-width: 100%; max-height: 220px; border-radius: 8px; display: none; }
+
+    .meta {
+      color: var(--muted);
+      font-size: 14px;
+      margin: 0;
+    }
+
+    .result-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .small-btn {
+      border: none;
+      background: transparent;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    textarea { min-height: 180px; resize: vertical; }
+
+    @media (max-width: 920px) {
+      .grid { grid-template-columns: 1fr; }
+      .buttons { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>تطبيق تحويل الخط السيء إلى نص واضح</h1>
+      <p>Google Vision API مع أوضاع اتصال: تلقائي / خادم محلي / مباشر.</p>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <div class="hint">
+          إذا ظهرت صفحة بيضاء سابقًا، فهذا الإصدار يعتمد على CSS داخلي (بدون CDN) لضمان العرض.
+        </div>
+
+        <div class="field">
+          <label for="modeSelect">طريقة الاتصال</label>
+          <select id="modeSelect">
+            <option value="auto">تلقائي (الخادم ثم المباشر)</option>
+            <option value="proxy">الخادم المحلي /api/vision</option>
+            <option value="direct">مباشر إلى Google Vision</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="apiKey">مفتاح Google Vision API (اختياري)</label>
+          <input id="apiKey" type="password" placeholder="مطلوب في الوضع المباشر أو إذا لم يوجد مفتاح بالخادم">
+        </div>
+
+        <div class="field">
+          <label for="imageInput">صورة الخط اليدوي</label>
+          <input id="imageInput" type="file" accept="image/*">
+        </div>
+
+        <div class="buttons">
+          <button id="scanButton" class="btn btn-primary">مسح النص الآن</button>
+          <button id="resetButton" class="btn">إعادة ضبط</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="preview">
+          <img id="preview" alt="معاينة الصورة" />
+          <p id="previewPlaceholder" class="meta">ستظهر المعاينة هنا بعد اختيار صورة.</p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="result-title">
+          <strong>النص المستخرج</strong>
+          <button id="copyButton" class="small-btn" type="button">نسخ النص المنسق</button>
+        </div>
+        <textarea id="rawText" placeholder="سيظهر النص الخام هنا"></textarea>
+
+        <div style="height:10px"></div>
+
+        <strong>النص المنسق</strong>
+        <textarea id="cleanText" placeholder="سيظهر النص المنسق هنا"></textarea>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const apiKeyInput = document.getElementById('apiKey');
+    const modeSelect = document.getElementById('modeSelect');
+    const imageInput = document.getElementById('imageInput');
+    const scanButton = document.getElementById('scanButton');
+    const resetButton = document.getElementById('resetButton');
+    const statusBox = document.getElementById('status');
+    const preview = document.getElementById('preview');
+    const previewPlaceholder = document.getElementById('previewPlaceholder');
+    const rawText = document.getElementById('rawText');
+    const cleanText = document.getElementById('cleanText');
+    const copyButton = document.getElementById('copyButton');
+
+    const showStatus = (message, type = 'info') => {
+      statusBox.className = `status show ${type}`;
+      statusBox.textContent = message;
+    };
+
+    const clearStatus = () => {
+      statusBox.className = 'status';
+      statusBox.textContent = '';
+    };
+
+    const resetForm = () => {
+      apiKeyInput.value = '';
+      imageInput.value = '';
+      rawText.value = '';
+      cleanText.value = '';
+      preview.src = '';
+      preview.style.display = 'none';
+      previewPlaceholder.style.display = 'block';
+      clearStatus();
+    };
+
+    const normalizeText = (text) => text
+      .split('\n')
+      .map((line) => line.replace(/\s+/g, ' ').trim())
+      .filter((line, idx, arr) => line !== '' || (idx > 0 && arr[idx - 1] !== ''))
+      .join('\n')
+      .trim();
+
+    const readJsonSafely = async (response) => {
+      const contentType = response.headers.get('content-type') || '';
+      if (!contentType.includes('application/json')) {
+        const text = await response.text();
+        throw new Error(`استجابة غير متوقعة: ${text.slice(0, 120)}`);
+      }
+      return response.json();
+    };
+
+    const checkProxyHealth = async () => {
+      const response = await fetch('/api/health');
+      if (!response.ok) throw new Error('الخادم المحلي غير متاح.');
+      return readJsonSafely(response);
+    };
+
+    const callProxy = async (base64Image, apiKey) => {
+      const response = await fetch('/api/vision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ image: base64Image, apiKey, languageHints: ['ar', 'en'] })
+      });
+
+      const data = await readJsonSafely(response);
+      if (!response.ok) throw new Error(data?.details || data?.error || 'فشل الاتصال بالخادم المحلي.');
+      return data?.text || '';
+    };
+
+    const callDirectVision = async (base64Image, apiKey) => {
+      if (!apiKey) throw new Error('في الوضع المباشر يجب إدخال مفتاح Google Vision API.');
+
+      const response = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requests: [{
+            image: { content: base64Image },
+            features: [{ type: 'TEXT_DETECTION' }],
+            imageContext: { languageHints: ['ar', 'en'] }
+          }]
+        })
+      });
+
+      const data = await readJsonSafely(response);
+      if (!response.ok) throw new Error(data?.error?.message || 'فشل الاتصال المباشر مع Google Vision API.');
+      return data?.responses?.[0]?.fullTextAnnotation?.text || '';
+    };
+
+    imageInput.addEventListener('change', () => {
+      const file = imageInput.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        preview.src = event.target.result;
+        preview.style.display = 'block';
+        previewPlaceholder.style.display = 'none';
+      };
+      reader.readAsDataURL(file);
+    });
+
+    scanButton.addEventListener('click', async () => {
+      const file = imageInput.files[0];
+      if (!file) {
+        showStatus('يرجى اختيار صورة بخط اليد قبل المسح.', 'error');
+        return;
+      }
+
+      scanButton.disabled = true;
+      showStatus('جارٍ رفع الصورة وتحليلها...', 'info');
+
+      try {
+        const base64Image = await new Promise((resolve, reject) => {
+          const reader = new FileReader();
+          reader.onload = () => resolve(reader.result.split(',')[1]);
+          reader.onerror = reject;
+          reader.readAsDataURL(file);
+        });
+
+        const apiKey = apiKeyInput.value.trim();
+        const mode = modeSelect.value;
+        let extracted = '';
+
+        if (window.location.protocol === 'file:' && mode !== 'direct') {
+          throw new Error('لا يمكن استخدام وضع الخادم مع file://. شغّل npm start وافتح http://localhost:8000/vision.html');
+        }
+
+        if (mode === 'proxy') {
+          await checkProxyHealth();
+          extracted = await callProxy(base64Image, apiKey);
+        } else if (mode === 'direct') {
+          extracted = await callDirectVision(base64Image, apiKey);
+        } else {
+          try {
+            await checkProxyHealth();
+            extracted = await callProxy(base64Image, apiKey);
+          } catch (proxyError) {
+            showStatus(`تعذر استخدام الخادم المحلي (${proxyError.message})، جارٍ التحويل للوضع المباشر...`, 'info');
+            extracted = await callDirectVision(base64Image, apiKey);
+          }
+        }
+
+        rawText.value = extracted || 'لم يتم العثور على نص.';
+        cleanText.value = extracted ? normalizeText(extracted) : '';
+        showStatus('تم استخراج النص بنجاح.', 'success');
+      } catch (error) {
+        showStatus(error.message || 'حدث خطأ غير متوقع أثناء المسح.', 'error');
+      } finally {
+        scanButton.disabled = false;
+      }
+    });
+
+    resetButton.addEventListener('click', resetForm);
+
+    copyButton.addEventListener('click', () => {
+      if (!cleanText.value) {
+        showStatus('لا يوجد نص منسق لنسخه بعد.', 'error');
+        return;
+      }
+
+      navigator.clipboard.writeText(cleanText.value)
+        .then(() => showStatus('تم نسخ النص المنسق.', 'success'))
+        .catch(() => showStatus('تعذر نسخ النص. حاول مرة أخرى.', 'error'));
+    });
+  </script>
+</body>
+</html>
