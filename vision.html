@@ -27,8 +27,16 @@
     <section class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
       <div class="bg-white shadow-sm rounded-2xl p-6 space-y-6">
         <div class="space-y-2 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-700">
-          شغّل التطبيق عبر الخادم المحلي. يمكنك استخدام المفتاح المخزن في الخادم
-          (<span class="font-semibold">GOOGLE_VISION_API_KEY</span>) أو إدخال المفتاح مؤقتاً بالأسفل.
+          اختر طريقة الاتصال: عبر الخادم المحلي (مستحسن) أو مباشرة إلى Google Vision API.
+        </div>
+
+        <div class="space-y-2">
+          <label for="modeSelect" class="font-semibold">طريقة الاتصال</label>
+          <select id="modeSelect" class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400">
+            <option value="auto">تلقائي (يجرب الخادم ثم المباشر)</option>
+            <option value="proxy">الخادم المحلي /api/vision</option>
+            <option value="direct">اتصال مباشر بـ Google Vision</option>
+          </select>
         </div>
 
         <div class="space-y-2">
@@ -122,6 +130,7 @@
 
   <script>
     const apiKeyInput = document.getElementById('apiKey');
+    const modeSelect = document.getElementById('modeSelect');
     const imageInput = document.getElementById('imageInput');
     const scanButton = document.getElementById('scanButton');
     const resetButton = document.getElementById('resetButton');
@@ -165,6 +174,53 @@
         .trim();
     };
 
+
+    const callProxy = async (base64Image, apiKey) => {
+      const response = await fetch('/api/vision', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          image: base64Image,
+          apiKey,
+          languageHints: ['ar', 'en']
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.details || data?.error || 'فشل الاتصال بالخادم المحلي.');
+      }
+
+      return data?.text || '';
+    };
+
+    const callDirectVision = async (base64Image, apiKey) => {
+      if (!apiKey) {
+        throw new Error('في الوضع المباشر يجب إدخال مفتاح Google Vision API.');
+      }
+
+      const response = await fetch(`https://vision.googleapis.com/v1/images:annotate?key=${apiKey}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          requests: [
+            {
+              image: { content: base64Image },
+              features: [{ type: 'TEXT_DETECTION' }],
+              imageContext: { languageHints: ['ar', 'en'] }
+            }
+          ]
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        throw new Error(data?.error?.message || 'فشل الاتصال المباشر مع Google Vision API.');
+      }
+
+      return data?.responses?.[0]?.fullTextAnnotation?.text || '';
+    };
+
     imageInput.addEventListener('change', () => {
       const file = imageInput.files[0];
       if (!file) return;
@@ -201,22 +257,23 @@
           reader.readAsDataURL(file);
         });
 
-        const response = await fetch('/api/vision', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            image: base64Image,
-            apiKey: apiKeyInput.value.trim(),
-            languageHints: ['ar', 'en']
-          })
-        });
+        const apiKey = apiKeyInput.value.trim();
+        const mode = modeSelect.value;
 
-        const data = await response.json();
-        if (!response.ok) {
-          throw new Error(data?.details || data?.error || 'تعذر الاتصال بالخادم المحلي.');
+        let extracted = '';
+        if (mode === 'proxy') {
+          extracted = await callProxy(base64Image, apiKey);
+        } else if (mode === 'direct') {
+          extracted = await callDirectVision(base64Image, apiKey);
+        } else {
+          try {
+            extracted = await callProxy(base64Image, apiKey);
+            showStatus('تمت القراءة عبر الخادم المحلي بنجاح.', 'success');
+          } catch (proxyError) {
+            extracted = await callDirectVision(base64Image, apiKey);
+            showStatus(`تعذر استخدام الخادم المحلي: ${proxyError.message} — تم التحويل للوضع المباشر.`, 'info');
+          }
         }
-
-        const extracted = data?.text || '';
         rawText.value = extracted || 'لم يتم العثور على نص.';
         cleanText.value = extracted ? formatExtractedText(extracted) : '';
 
