@@ -1,5 +1,4 @@
 const express = require('express');
-const fetch = require('node-fetch');
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -9,12 +8,16 @@ app.use(express.static(__dirname));
 
 app.post('/api/vision', async (req, res) => {
   try {
-    const apiKey = process.env.GOOGLE_VISION_API_KEY;
+    const { image, languageHints, apiKey: providedApiKey } = req.body;
+    const apiKey = process.env.GOOGLE_VISION_API_KEY || providedApiKey;
+
     if (!apiKey) {
-      return res.status(500).json({ error: 'Missing GOOGLE_VISION_API_KEY.' });
+      return res.status(400).json({
+        error: 'Missing API key.',
+        details: 'ضع GOOGLE_VISION_API_KEY في الخادم أو أدخل المفتاح في الواجهة.'
+      });
     }
 
-    const { image, languageHints } = req.body;
     if (!image) {
       return res.status(400).json({ error: 'Missing base64 image data.' });
     }
@@ -35,14 +38,14 @@ app.post('/api/vision', async (req, res) => {
       })
     });
 
+    const data = await response.json();
+
     if (!response.ok) {
-      const errorText = await response.text();
-      return res.status(502).json({ error: 'Vision API error', details: errorText });
+      const details = data?.error?.message || 'Vision API request failed.';
+      return res.status(502).json({ error: 'Vision API error', details });
     }
 
-    const data = await response.json();
     const text = data?.responses?.[0]?.fullTextAnnotation?.text || '';
-
     return res.json({ text });
   } catch (error) {
     return res.status(500).json({ error: 'Server error', details: error.message });

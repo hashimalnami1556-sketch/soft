@@ -68,6 +68,8 @@ This repository now includes a static page at `vision.html` plus a small Node.js
 
 The page sends base64 image data to `POST /api/vision`, and the proxy forwards it to Google Vision API.
 
+> If you do not export `GOOGLE_VISION_API_KEY`, you can still paste the key in the web form (optional field) and the server will use that value for the current request.
+
 ## Purpose
 
 The repository serves as a shared data drop for spreadsheet-based financial and import records. Contributors can upload new data files or process existing ones for reporting and analysis.

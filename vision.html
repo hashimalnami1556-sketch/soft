@@ -27,9 +27,18 @@
     <section class="mt-10 grid gap-6 lg:grid-cols-[1.2fr_1fr]">
       <div class="bg-white shadow-sm rounded-2xl p-6 space-y-6">
         <div class="space-y-2 rounded-xl border border-blue-100 bg-blue-50 px-4 py-3 text-sm text-blue-700">
-          يشترط تشغيل خادم محلي يحمي مفتاح Google Vision API ويستقبل الطلبات على المسار
-          <span class="font-semibold">/api/vision</span>.
-          هذا يمنع مشاكل الحظر عبر المتصفح ويحافظ على أمان المفتاح.
+          شغّل التطبيق عبر الخادم المحلي. يمكنك استخدام المفتاح المخزن في الخادم
+          (<span class="font-semibold">GOOGLE_VISION_API_KEY</span>) أو إدخال المفتاح مؤقتاً بالأسفل.
+        </div>
+
+        <div class="space-y-2">
+          <label for="apiKey" class="font-semibold">مفتاح Google Vision API (اختياري)</label>
+          <input
+            id="apiKey"
+            type="password"
+            placeholder="أدخله فقط إذا لم يتم ضبطه في الخادم"
+            class="w-full rounded-xl border border-slate-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
         </div>
 
         <div class="space-y-2">
@@ -112,6 +121,7 @@
   </main>
 
   <script>
+    const apiKeyInput = document.getElementById('apiKey');
     const imageInput = document.getElementById('imageInput');
     const scanButton = document.getElementById('scanButton');
     const resetButton = document.getElementById('resetButton');
@@ -137,6 +147,7 @@
     };
 
     const resetForm = () => {
+      apiKeyInput.value = '';
       imageInput.value = '';
       rawText.value = '';
       cleanText.value = '';
@@ -195,17 +206,17 @@
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             image: base64Image,
+            apiKey: apiKeyInput.value.trim(),
             languageHints: ['ar', 'en']
           })
         });
 
+        const data = await response.json();
         if (!response.ok) {
-          throw new Error('تعذر الاتصال بالخادم المحلي. تأكد من تشغيله وتفعيل Google Vision API.');
+          throw new Error(data?.details || data?.error || 'تعذر الاتصال بالخادم المحلي.');
         }
 
-        const data = await response.json();
         const extracted = data?.text || '';
-
         rawText.value = extracted || 'لم يتم العثور على نص.';
         cleanText.value = extracted ? formatExtractedText(extracted) : '';
 
