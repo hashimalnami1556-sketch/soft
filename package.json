@@ -1,0 +1,24 @@
+{
+  "name": "soft-vision-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local proxy for Google Vision API handwriting cleanup app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "build:win-exe": "pkg . --targets node18-win-x64 --output dist/vision-app.exe",
+    "build:linux-bin": "pkg . --targets node18-linux-x64 --output dist/vision-app"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "pkg": "^5.8.1"
+  },
+  "pkg": {
+    "assets": [
+      "vision.html"
+    ]
+  },
+  "bin": "server.js"
+}
