@@ -46,7 +46,30 @@ No project-specific setup is required. Install the tools you need to inspect or 
 - [openpyxl](https://openpyxl.readthedocs.io/) for Excel support
 - [pyodbc](https://github.com/mkleehammer/pyodbc) and the [Access Database Engine](https://learn.microsoft.com/en-us/office/troubleshoot/access/database-engine-installation) for `.accdb` files.
 
+## Handwriting Cleanup App (Google Vision API)
+
+This repository now includes a static page at `vision.html` plus a small Node.js proxy to keep the API key server-side.
+
+### Run locally
+
+1. Install dependencies:
+   ```bash
+   npm install
+   ```
+2. Set your API key and start the server:
+   ```bash
+   export GOOGLE_VISION_API_KEY="YOUR_KEY"
+   npm start
+   ```
+3. Open the app:
+   ```bash
+   http://localhost:8000/vision.html
+   ```
+
+The page sends base64 image data to `POST /api/vision`, and the proxy forwards it to Google Vision API.
+
+> If you do not export `GOOGLE_VISION_API_KEY`, you can still paste the key in the web form (optional field) and the server will use that value for the current request.
+
 ## Purpose
 
 The repository serves as a shared data drop for spreadsheet-based financial and import records. Contributors can upload new data files or process existing ones for reporting and analysis.
-
