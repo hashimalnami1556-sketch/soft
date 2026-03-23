@@ -37,6 +37,14 @@ wb = pd.read_excel("Book 14.xlsx")
 ### Access databases (`.accdb`)
 To open Access files, use Microsoft Access or connect programmatically using `pyodbc` with the [Microsoft Access Database Engine](https://learn.microsoft.com/en-us/office/troubleshoot/access/database-engine-installation).
 
+## Source Reference
+
+The dataset was originally provided from a local Windows path labeled **RakanAPI**:
+
+- `file://DESKTOP-FR1FE47/Users/Admin/OneDrive/سطح%20المكتب/RakanAPI_project/RakanAPI`
+
+Because this is a machine-local path, collaborators should copy the files into this repository when sharing updates.
+
 ## Setup
 
 No project-specific setup is required. Install the tools you need to inspect or analyze the data:
