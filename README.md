@@ -54,6 +54,11 @@ No project-specific setup is required. Install the tools you need to inspect or 
 - [openpyxl](https://openpyxl.readthedocs.io/) for Excel support
 - [pyodbc](https://github.com/mkleehammer/pyodbc) and the [Access Database Engine](https://learn.microsoft.com/en-us/office/troubleshoot/access/database-engine-installation) for `.accdb` files.
 
+## Status
+
+- العربية: **نسخة آيفون جاهزة للتشغيل.**
+- English: **The iPhone version is ready to run.**
+
 ## Purpose
 
 The repository serves as a shared data drop for spreadsheet-based financial and import records. Contributors can upload new data files or process existing ones for reporting and analysis.
