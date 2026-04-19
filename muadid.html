@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>معاضد - تطبيق المساندة اليومية</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap">
+    <link rel="stylesheet" href="assets/css/muadid.css">
+</head>
+<body>
+    <main class="app-shell">
+        <section class="hero">
+            <div>
+                <h1>معاضد</h1>
+                <p>تطبيق ذكي يساند فريقك في إدارة المهام والمتابعة اليومية.</p>
+            </div>
+            <div class="hero-meta">
+                <div>اليوم: <span id="summaryDate"></span></div>
+                <div>المهام المكتملة: <span id="completedCount">0</span> / <span id="totalCount">0</span></div>
+                <div>الأولوية الآن: <span id="focusTask"></span></div>
+            </div>
+        </section>
+
+        <section class="grid two">
+            <div class="card">
+                <h2>نظرة سريعة</h2>
+                <div class="stats">
+                    <div class="stat">
+                        <strong>6</strong>
+                        رسائل واردة
+                    </div>
+                    <div class="stat">
+                        <strong>3</strong>
+                        طلبات جديدة
+                    </div>
+                    <div class="stat">
+                        <strong>14:30</strong>
+                        موعد أقرب متابعة
+                    </div>
+                    <div class="stat">
+                        <strong>4</strong>
+                        تنبيهات اليوم
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <h2>إجراءات سريعة</h2>
+                <div class="actions">
+                    <button class="action-btn">إضافة تذكير</button>
+                    <button class="action-btn">تجهيز تقرير مختصر</button>
+                    <button class="action-btn">إرسال رسالة لفريقك</button>
+                    <button class="action-btn">عرض سجل المتابعة</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="grid two">
+            <div class="card">
+                <h2>قائمة المهام</h2>
+                <ul id="tasks" class="task-list"></ul>
+            </div>
+            <div class="card">
+                <h2>إضافة مهمة جديدة</h2>
+                <form id="taskForm" class="task-form">
+                    <input type="text" name="title" placeholder="عنوان المهمة" required>
+                    <textarea name="details" rows="4" placeholder="تفاصيل المهمة"></textarea>
+                    <button type="submit">حفظ المهمة</button>
+                </form>
+            </div>
+        </section>
+
+        <section class="grid two">
+            <div class="card">
+                <h2>تنسيق يومك</h2>
+                <p>معاضد يجمع إشعاراتك، المهام، والمتابعة في لوحة واحدة حتى لا تفوت أي شيء.</p>
+            </div>
+            <div class="card">
+                <h2>جاهزية الفريق</h2>
+                <p>راقب حالة الفريق ووزع العمل بسهولة عبر لوحات متابعة مبسطة.</p>
+            </div>
+        </section>
+
+        <p class="footer">© 2024 معاضد - كل الحقوق محفوظة</p>
+    </main>
+
+    <script src="assets/js/muadid.js"></script>
+</body>
+</html>
